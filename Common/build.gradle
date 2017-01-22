@@ -1,16 +1,16 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -21,5 +21,20 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    //Android Support
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+    compile "com.android.support:percent:$rootProject.supportLibraryVersion"
+    //网络请求相关
+    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    compile "com.squareup.retrofit2:retrofit-mock:$rootProject.retrofitVersion"
+    compile "com.github.franmontiel:PersistentCookieJar:$rootProject.cookieVersion"
+    //稳定的
+    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    compile "com.orhanobut:logger:$rootProject.loggerVersion"
+    compile "org.greenrobot:eventbus:$rootProject.eventbusVersion"
+    compile "com.google.code.gson:gson:$rootProject.gsonVersion"
+    //不稳定的
+    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
+    compile "com.jude:easyrecyclerview:$rootProject.easyRecyclerVersion"
 }

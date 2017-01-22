@@ -3,10 +3,12 @@
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
 
+    dependencies {
+        classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -15,9 +17,42 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        mavenCentral()
+        //Add the JitPack repository
+        maven { url "https://jitpack.io" }
+        //支持arr包
+        flatDir {
+            dirs 'libs'
+        }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+// Define versions in a single place
+ext {
+    // Sdk and tools
+    buildToolsVersion = localBuildToolsVersion
+    compileSdkVersion = 25
+    minSdkVersion = 15
+    targetSdkVersion = 25
+    versionCode = 1
+    versionName = "1.0"
+    javaVersion = JavaVersion.VERSION_1_8
+
+    // App dependencies version
+    supportLibraryVersion = "25.1.0"
+    retrofitVersion = "2.1.0"
+    glideVersion = "3.7.0"
+    loggerVersion = "1.15"
+    eventbusVersion = "3.0.0"
+    gsonVersion = "2.8.0"
+
+    //不成熟开源库，需经常检查升级版本
+    aptCompilerVersion = "1.1.7"
+    routerVersion = "1.2.1"
+    easyRecyclerVersion = "4.3.4"
+    cookieVersion = "v1.0.0"
 }
