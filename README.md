@@ -1,0 +1,2 @@
+# AndroidModulePattern
+Android项目组件化示例代码
