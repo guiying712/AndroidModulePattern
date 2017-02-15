@@ -1,23 +1,9 @@
-/*
- *  @ProjectName: ISMS_Petrel_MCU
- *  @Copyright: 2016 HangZhou Hikvision System Technology Co., Ltd. All Right Reserved.
- *  @address: http://www.hikvision.com
- *  @Description: 本内容仅限于杭州海康威视系统技术公有限司内部使用，禁止转发.
- */
-
 package com.guiying.common.http;
-
-import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -89,17 +75,17 @@ public class DataParseUtil {
      * @param json  要解析的json
      * @param clazz 解析类
      */
-    public static Object parseXml(String json, Class<?> clazz) {
-        try {
-            if (!TextUtils.isEmpty(json) && clazz != null) {
-                Serializer serializer = new Persister();
-                InputStreamReader is = new InputStreamReader(new ByteArrayInputStream(json.getBytes("UTF-8")), "utf-8");
-                return serializer.read(clazz, is);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    public static Object parseXml(String json, Class<?> clazz) {
+//        try {
+//            if (!TextUtils.isEmpty(json) && clazz != null) {
+//                Serializer serializer = new Persister();
+//                InputStreamReader is = new InputStreamReader(new ByteArrayInputStream(json.getBytes("UTF-8")), "utf-8");
+//                return serializer.read(clazz, is);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
 }

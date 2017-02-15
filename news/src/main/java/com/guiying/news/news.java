@@ -1,5 +1,7 @@
 package com.guiying.news;
 
+import com.github.mzule.activityrouter.annotation.Module;
+
 /**
  * <p>类说明</p>
  *

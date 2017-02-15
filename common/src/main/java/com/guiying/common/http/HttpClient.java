@@ -2,16 +2,15 @@ package com.guiying.common.http;
 
 import android.text.TextUtils;
 
-import com.common.base.BaseApplication;
-import com.common.data.InfoCache;
-import com.common.util.NetworkUtils;
-import com.common.util.StringUtils;
-import com.common.util.ToastUtils;
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
-import com.hikvision.isms.petrel.common.R;
+import com.guiying.common.R;
+import com.guiying.common.utils.NetworkUtils;
+import com.guiying.common.utils.StringUtils;
+import com.guiying.common.utils.ToastUtils;
+import com.guiying.common.utils.Utils;
 import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
@@ -48,7 +47,7 @@ public class HttpClient {
     /*返回数据为xml类型*/
     public static final int XML = 3;
     /*用户设置的BASE_URL*/
-    public static String BASE_URL = InfoCache.getIns().getBaseUrl();
+    public static String BASE_URL = "";
     /*本地使用的baseUrl*/
     private String baseUrl = "";
     private static OkHttpClient okHttpClient;
@@ -74,11 +73,11 @@ public class HttpClient {
     }
 
     private HttpClient() {
-        ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(BaseApplication.getIns()));
-        //HttpsUtil.SSLParams sslParams = HttpsUtil.getSslSocketFactory(BaseApplication.context, new int[0], R.raw.ivms8700, STORE_PASS);
+        ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(Utils.getContext()));
+        //HttpsUtil.SSLParams sslParams = HttpsUtil.getSslSocketFactory(BaseApplication.context, new int[0], , );
         okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
-                .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
+                //.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
                 .hostnameVerifier(HttpsUtil.getHostnameVerifier())
                 .addInterceptor(new LoggerInterceptor(null, true))
                 .cookieJar(cookieJar)
@@ -245,10 +244,10 @@ public class HttpClient {
         }
 
         /**
-         * 如需设置baseUrl请使用这种方法：HttpClient.BASE_URL = "https://10.33.31.200:8890/";
+         * 如需设置baseUrl请使用这种方法：HttpClient.BASE_URL = "http://000000000000/";
          * 不推荐使用下面的方法改变baseUrl的值。
          * 请求地址的baseUrl，最后会被赋值给HttpClient的静态变量BASE_URL；
-         * 例如："https://10.33.31.200:8890/"
+         * 例如："https://00000000000/"
          *
          * @param baseUrl 请求地址的baseUrl
          */
@@ -327,7 +326,7 @@ public class HttpClient {
                 onResultListener.onSuccess(DataParseUtil.parseToArrayList(data, clazz));
                 break;
             case XML:
-                onResultListener.onSuccess(DataParseUtil.parseXml(data, clazz));
+                //onResultListener.onSuccess(DataParseUtil.parseXml(data, clazz));
                 break;
             default:
                 Logger.e("http parse tip:", "if you want return object, please use bodyType() set data type");

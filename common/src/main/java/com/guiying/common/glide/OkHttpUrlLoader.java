@@ -1,4 +1,4 @@
-package com.guiying.common.loader;
+package com.guiying.common.glide;
 
 import android.content.Context;
 

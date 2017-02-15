@@ -7,7 +7,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-import com.common.util.StringUtils;
+import com.guiying.common.utils.StringUtils;
+import com.guiying.common.utils.Utils;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 
@@ -17,7 +18,7 @@ import java.util.Stack;
  * 要想使用BaseApplication，必须在组件中实现自己的Application，并且继承BaseApplication；
  * 组件中实现的Application必须在AndroidManifest.xml中注册，否则无法使用；
  * 组件的Application需置于java/debug文件夹中，不得放于主代码；
- * 组件中获取Context的方法必须为:BaseApplication.context，不允许其他写法；
+ * 组件中获取Context的方法必须为:Utils.getContext()，不允许其他写法；
  * BaseApplication主要有如下功能：
  * 1、全局获取Context；
  * 2、用来管理全局Activity；
@@ -30,8 +31,6 @@ public class BaseApplication extends Application {
 
     private static BaseApplication sInstance;
 
-    public static Context context;
-
     private static Stack<Activity> activityStack;
 
     public static BaseApplication getIns() {
@@ -42,7 +41,8 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
-        context = this.getApplicationContext();
+        Context context = this.getApplicationContext();
+        Utils.init(context);
         if (isAppDebug(context)) {
             //只有debug模式才会打印日志
             Logger.init("Petrel").logLevel(LogLevel.FULL);
