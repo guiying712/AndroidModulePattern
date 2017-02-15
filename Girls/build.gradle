@@ -1,4 +1,3 @@
-println isModule.toBoolean()
 if (isModule.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
@@ -28,9 +27,9 @@ android {
     sourceSets {
         main {
             if (isModule.toBoolean()) {
-                Manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             } else {
-                Manifest.srcFile 'src/main/release/AndroidManifest.xml'
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
                 //release模式下排除debug文件夹中的所有Java文件
                 java {
                     exclude 'debug/**'
