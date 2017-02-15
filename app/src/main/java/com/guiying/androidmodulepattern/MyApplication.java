@@ -1,5 +1,6 @@
 package com.guiying.androidmodulepattern;
 
+import com.github.mzule.activityrouter.annotation.Modules;
 import com.guiying.common.base.BaseApplication;
 
 /**
@@ -9,6 +10,7 @@ import com.guiying.common.base.BaseApplication;
  * @version V1.2.0
  * @name MyApplication
  */
+@Modules({"app", "girls", "news"})
 public class MyApplication extends BaseApplication {
 
     @Override

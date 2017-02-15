@@ -1,9 +1,12 @@
 package com.guiying.news;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class NewsActivity extends AppCompatActivity {
+import com.github.mzule.activityrouter.annotation.Router;
+import com.guiying.common.base.BaseActivity;
+
+@Router("news")
+public class NewsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

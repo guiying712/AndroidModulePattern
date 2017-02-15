@@ -1,9 +1,12 @@
 package com.guiying.girls;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class GirlsActivity extends AppCompatActivity {
+import com.github.mzule.activityrouter.annotation.Router;
+import com.guiying.common.base.BaseActivity;
+
+@Router("girls")
+public class GirlsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
