@@ -2,7 +2,9 @@
     package="com.guiying.girls">
 
     <application android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".GirlsActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

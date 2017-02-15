@@ -36,8 +36,6 @@ import retrofit2.Retrofit;
  */
 public class HttpClient {
 
-    /*The certificate's password*/
-    private static final String STORE_PASS = "ivms8700";
     /*返回数据为String*/
     public static final int STRING = 0;
     /*返回数据为json对象*/
