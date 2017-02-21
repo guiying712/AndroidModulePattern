@@ -3,11 +3,8 @@ package com.guiying.common.base;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.util.Log;
 
-import com.guiying.common.utils.StringUtils;
 import com.guiying.common.utils.Utils;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
@@ -19,9 +16,7 @@ import java.util.Stack;
  * 组件中实现的Application必须在AndroidManifest.xml中注册，否则无法使用；
  * 组件的Application需置于java/debug文件夹中，不得放于主代码；
  * 组件中获取Context的方法必须为:Utils.getContext()，不允许其他写法；
- * BaseApplication主要有如下功能：
- * 1、全局获取Context；
- * 2、用来管理全局Activity；
+ * BaseApplication主要用来管理全局Activity;
  *
  * @author 2016/12/2 17:02
  * @version V1.0.0
@@ -41,9 +36,8 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
-        Context context = this.getApplicationContext();
-        Utils.init(context);
-        if (isAppDebug(context)) {
+        Utils.init(this);
+        if (Utils.isAppDebug()) {
             //只有debug模式才会打印日志
             Logger.init("Petrel").logLevel(LogLevel.FULL);
         } else {
@@ -125,22 +119,5 @@ public class BaseApplication extends Application {
         }
     }
 
-    /**
-     * 判断App是否是Debug版本
-     *
-     * @param context 上下文
-     * @return {@code true}: 是<br>{@code false}: 否
-     */
-    public static boolean isAppDebug(Context context) {
-        if (StringUtils.isSpace(context.getPackageName())) return false;
-        try {
-            PackageManager pm = context.getPackageManager();
-            ApplicationInfo ai = pm.getApplicationInfo(context.getPackageName(), 0);
-            return ai != null && (ai.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 
 }
