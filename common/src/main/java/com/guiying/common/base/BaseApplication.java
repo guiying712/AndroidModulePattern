@@ -26,7 +26,7 @@ public class BaseApplication extends Application {
 
     private static BaseApplication sInstance;
 
-    private static Stack<Activity> activityStack;
+    private Stack<Activity> activityStack;
 
     public static BaseApplication getIns() {
         return sInstance;
