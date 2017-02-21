@@ -1,19 +1,20 @@
 package com.guiying.common.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
+import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
+import android.view.View;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 16/12/08
- *     desc  : Utils初始化相关
- * </pre>
+ * <p>Utils初始化相关 </p>
+ * @name Utils
+ * @author 张华洋 2017/2/21 13:46
  */
 public class Utils {
 
     private static Context context;
-
 
     private Utils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
@@ -36,6 +37,37 @@ public class Utils {
     public static Context getContext() {
         if (context != null) return context;
         throw new NullPointerException("u should init first");
+    }
+
+    /**
+     * View获取Activity的工具
+     *
+     * @param view view
+     * @return Activity
+     */
+    public static
+    @NonNull
+    Activity getActivity(View view) {
+        Context context = view.getContext();
+
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity) context;
+            }
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+
+        throw new IllegalStateException("View " + view + " is not attached to an Activity");
+    }
+
+    /**
+     * 全局获取String的方法
+     *
+     * @param id 资源Id
+     * @return String
+     */
+    public static String getString(@StringRes int id) {
+        return context.getResources().getString(id);
     }
 
 }

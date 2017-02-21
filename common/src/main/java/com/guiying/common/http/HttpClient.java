@@ -36,6 +36,8 @@ import retrofit2.Retrofit;
  */
 public class HttpClient {
 
+    /*The certificate's password*/
+    private static final String STORE_PASS = "4444444";
     /*返回数据为String*/
     public static final int STRING = 0;
     /*返回数据为json对象*/
@@ -72,7 +74,7 @@ public class HttpClient {
 
     private HttpClient() {
         ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(Utils.getContext()));
-        //HttpsUtil.SSLParams sslParams = HttpsUtil.getSslSocketFactory(BaseApplication.context, new int[0], , );
+        //HttpsUtil.SSLParams sslParams = HttpsUtil.getSslSocketFactory(Utils.getContext(), new int[0], , STORE_PASS);
         okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 //.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
@@ -242,10 +244,10 @@ public class HttpClient {
         }
 
         /**
-         * 如需设置baseUrl请使用这种方法：HttpClient.BASE_URL = "http://000000000000/";
+         * 如需设置baseUrl请使用这种方法：HttpClient.BASE_URL = "https://10.33.31.200:8890/";
          * 不推荐使用下面的方法改变baseUrl的值。
          * 请求地址的baseUrl，最后会被赋值给HttpClient的静态变量BASE_URL；
-         * 例如："https://00000000000/"
+         * 例如："https://10.33.31.200:8890/"
          *
          * @param baseUrl 请求地址的baseUrl
          */
@@ -324,7 +326,7 @@ public class HttpClient {
                 onResultListener.onSuccess(DataParseUtil.parseToArrayList(data, clazz));
                 break;
             case XML:
-                //onResultListener.onSuccess(DataParseUtil.parseXml(data, clazz));
+                onResultListener.onSuccess(DataParseUtil.parseXml(data, clazz));
                 break;
             default:
                 Logger.e("http parse tip:", "if you want return object, please use bodyType() set data type");
