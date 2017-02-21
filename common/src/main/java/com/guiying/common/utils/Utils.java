@@ -9,8 +9,6 @@ import android.view.View;
 
 /**
  * <p>Utils初始化相关 </p>
- * @name Utils
- * @author 张华洋 2017/2/21 13:46
  */
 public class Utils {
 
