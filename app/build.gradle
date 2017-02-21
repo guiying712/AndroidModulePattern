@@ -56,7 +56,7 @@ dependencies {
         compile project(':girls')
         compile project(':news')
     } else {
-        //compile project(':common')
+        compile project(':common')
     }
     //router
     apt "com.github.mzule.activityrouter:compiler:$rootProject.aptCompilerVersion"

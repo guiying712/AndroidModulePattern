@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Base.AppTheme">
+        <item name="android:navigationBarColor">@color/gray_E6</item><!--虚拟导航栏颜色-->
+        <!--<item name="android:colorControlHighlight">@color/gray_AD</item>&lt;!&ndash;波纹颜色&ndash;&gt;-->
+    </style>
+
+    <style name="TransparentStatusBarTheme" parent="AppTheme.NoActionBar">
+        <item name="android:statusBarColor">@color/gray_D5</item>
+    </style>
+
+
+</resources>

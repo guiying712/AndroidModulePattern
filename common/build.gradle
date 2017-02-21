@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //Android Support
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+    compile "com.android.support:percent:$rootProject.supportLibraryVersion"
+    //网络请求相关
+    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    compile "com.squareup.retrofit2:retrofit-mock:$rootProject.retrofitVersion"
+    compile "com.github.franmontiel:PersistentCookieJar:$rootProject.cookieVersion"
+    //稳定的
+    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    compile "com.orhanobut:logger:$rootProject.loggerVersion"
+    compile "org.greenrobot:eventbus:$rootProject.eventbusVersion"
+    compile "com.google.code.gson:gson:$rootProject.gsonVersion"
+    //不稳定的
+    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
+    compile "com.jude:easyrecyclerview:$rootProject.easyRecyclerVersion"
+}
