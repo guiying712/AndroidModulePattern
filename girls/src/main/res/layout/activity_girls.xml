@@ -4,7 +4,7 @@
     android:id="@+id/activity_girls"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.guiying.girls.GirlsActivity">
+    tools:context="com.guiying.girls.main.GirlsActivity">
 
     <TextView
         android:layout_width="wrap_content"

@@ -4,7 +4,7 @@
     android:id="@+id/activity_news"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.guiying.news.NewsActivity">
+    tools:context="com.guiying.news.main.NewsActivity">
 
     <TextView
         android:layout_width="wrap_content"

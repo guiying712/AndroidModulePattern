@@ -2,6 +2,9 @@ package com.guiying.androidmodulepattern;
 
 import com.github.mzule.activityrouter.annotation.Modules;
 import com.guiying.common.base.BaseApplication;
+import com.guiying.common.http.HttpClient;
+import com.guiying.common.http.OnResultListener;
+import com.orhanobut.logger.Logger;
 
 /**
  * <p>类说明</p>
@@ -13,8 +16,34 @@ import com.guiying.common.base.BaseApplication;
 @Modules({"app", "girls", "news"})
 public class MyApplication extends BaseApplication {
 
+    String GAN_HUO_API = "http://gank.io/";
+
     @Override
     public void onCreate() {
         super.onCreate();
+        HttpClient client = new HttpClient.Builder()
+                .baseUrl(GAN_HUO_API)
+                .url("api/data")
+                .params("type", "福利")
+                .params("count", String.valueOf(20))
+                .params("page", String.valueOf(1))
+                .build();
+        client.post(new OnResultListener<String>() {
+
+            @Override
+            public void onSuccess(String result) {
+                Logger.e(result);
+            }
+
+            @Override
+            public void onError(int code, String message) {
+                Logger.e(message);
+            }
+
+            @Override
+            public void onFailure(String message) {
+                Logger.e(message);
+            }
+        });
     }
 }

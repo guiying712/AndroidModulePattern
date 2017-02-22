@@ -2,4 +2,7 @@
     <string name="app_name">AndroidModulePattern</string>
 
     <string name="global_scheme">module</string>
+
+    <string name="app_exit_hint">再按一次退出程序哦~</string>
+
 </resources>

@@ -1,24 +1,25 @@
-package com.guiying.girls;
+package com.guiying.news.main;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 
 import com.github.mzule.activityrouter.annotation.Router;
 import com.guiying.common.base.BaseActivity;
+import com.guiying.news.R;
 
-@Router("girls")
-public class GirlsActivity extends BaseActivity {
+@Router("news")
+public class NewsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_girls);
+        setContentView(R.layout.activity_news);
 
         //标题栏设置
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(R.string.girls_activity_title);
+            actionBar.setTitle(R.string.news_activity_title);
         }
     }
 
@@ -28,5 +29,4 @@ public class GirlsActivity extends BaseActivity {
         onBackPressed();
         return true;
     }
-
 }

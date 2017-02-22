@@ -3,4 +3,14 @@
 
     <string name="current_internet_invalid">当前网络未连接</string>
 
+    <!--loading-->
+    <string name="loading">载入中···</string>
+
+    <!--EasyRecyclerView库的公用布局-->
+    <string name="more_loading">加载中…</string>
+    <string name="no_more">没有更多了</string>
+    <string name="load_error_resume">加载出错，点击重试</string>
+    <string name="more">更多</string>
+    <string name="no_data">暂无数据</string>
+
 </resources>
