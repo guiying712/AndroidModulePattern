@@ -35,7 +35,7 @@ import javax.net.ssl.X509TrustManager;
  * HttpsUtils来自于鸿洋的： https://github.com/hongyangAndroid/okhttputils；
  * 增加了主机名校验方法getHostnameVerifier()；
  * 其他参考的文章有：http://android.jobbole.com/83787/；
- * <p>
+ *
  * Android 4.X 对TLS1.1、TLS1.2的支持参考了http://blog.csdn.net/joye123/article/details/53888252
  */
 public class HttpsUtil {
