@@ -18,12 +18,13 @@ public class GirlsPresenter implements GirlsContract.Presenter {
 
     public GirlsPresenter(GirlsContract.View view) {
         mView = view;
+        mView.setPresenter(this);
         mDataSource = new RemoteGirlsDataSource();
     }
 
     @Override
-    public void getGirls(int page, int size, final boolean isRefresh) {
-        mDataSource.getGirls(page, size, new GirlsDataSource.LoadGirlsCallback() {
+    public void getGirls(int size, int page, final boolean isRefresh) {
+        mDataSource.getGirls(size, page, new GirlsDataSource.LoadGirlsCallback() {
             @Override
             public void onGirlsLoaded(GirlsParser girlsParser) {
                 if (isRefresh) {
@@ -45,6 +46,6 @@ public class GirlsPresenter implements GirlsContract.Presenter {
 
     @Override
     public void start() {
-        getGirls(1, 20, true);
+        getGirls(20, 1, true);
     }
 }

@@ -11,7 +11,6 @@ public interface GirlsDataSource {
         void onDataNotAvailable();
     }
 
-    void getGirls(int page, int size, LoadGirlsCallback callback);
+    void getGirls(int size, int page, LoadGirlsCallback callback);
 
-    void getGirl(LoadGirlsCallback callback);
 }

@@ -5,6 +5,9 @@ package com.guiying.girls;
  */
 public interface Constants {
 
-    String GAN_HUO_API = "http://gank.io/";
+    /**
+     * http://gank.io/api/data/福利/10/1
+     */
+    String GAN_HUO_API = "http://gank.io/api/data/";
 
 }

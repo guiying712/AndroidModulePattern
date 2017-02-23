@@ -24,7 +24,6 @@ import retrofit2.http.Url;
  */
 public interface ApiService {
 
-
     @GET
     Call<ResponseBody> executeGet(@Url String url);
 

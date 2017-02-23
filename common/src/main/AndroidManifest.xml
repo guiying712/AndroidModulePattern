@@ -30,9 +30,9 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application>
-        <!--<meta-data-->
-        <!--android:name="com.common.loader.OkHttpGlideModule"-->
-        <!--android:value="GlideModule" />-->
+        <meta-data
+            android:name="com.guiying.common.glide.OkHttpGlideModule"
+            android:value="GlideModule" />
 
     </application>
 

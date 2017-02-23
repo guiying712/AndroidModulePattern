@@ -106,7 +106,6 @@ public class HttpClient {
         }
     }
 
-
     public void post(final OnResultListener onResultListener) {
         Builder builder = mBuilder;
         mCall = retrofit.create(ApiService.class)

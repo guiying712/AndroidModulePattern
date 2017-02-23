@@ -137,13 +137,13 @@ public class GirlsView extends FrameLayout implements GirlsContract.View, SwipeR
     public void onLoadMore() {
         if (mData.size() % 20 == 0) {
             page++;
-            mPresenter.getGirls(page, size, false);
+            mPresenter.getGirls(size, page, false);
         }
     }
 
     @Override
     public void onRefresh() {
-        mPresenter.getGirls(1, size, true);
+        mPresenter.getGirls(size, page, true);
         page = 1;
     }
 }

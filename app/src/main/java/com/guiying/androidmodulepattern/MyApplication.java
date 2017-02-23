@@ -16,19 +16,23 @@ import com.orhanobut.logger.Logger;
 @Modules({"app", "girls", "news"})
 public class MyApplication extends BaseApplication {
 
-    String GAN_HUO_API = "http://gank.io/";
 
     @Override
     public void onCreate() {
         super.onCreate();
+        login();
+    }
+
+    /**
+     * 在这里模拟登陆，然后拿到sessionId或者Token
+     * 这样就能够在组件请求接口了
+     */
+    private void login() {
         HttpClient client = new HttpClient.Builder()
-                .baseUrl(GAN_HUO_API)
-                .url("api/data")
-                .params("type", "福利")
-                .params("count", String.valueOf(20))
-                .params("page", String.valueOf(1))
+                .baseUrl("http://gank.io/api/data/")
+                .url("福利/10/1")
                 .build();
-        client.post(new OnResultListener<String>() {
+        client.get(new OnResultListener<String>() {
 
             @Override
             public void onSuccess(String result) {
