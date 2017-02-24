@@ -2,6 +2,7 @@
     <string name="app_name">Common</string>
 
     <string name="current_internet_invalid">当前网络未连接</string>
+    <string name="internet_base_url_null">baseUrl不能为空</string>
 
     <!--loading-->
     <string name="loading">载入中···</string>

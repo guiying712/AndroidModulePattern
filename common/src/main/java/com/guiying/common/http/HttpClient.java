@@ -47,7 +47,7 @@ public class HttpClient {
     /*返回数据为xml类型*/
     public static final int XML = 3;
     /*用户设置的BASE_URL*/
-    public static String BASE_URL = "";
+    private static String BASE_URL = "";
     /*本地使用的baseUrl*/
     private String baseUrl = "";
     private static OkHttpClient okHttpClient;
@@ -137,7 +137,7 @@ public class HttpClient {
     private void request(final Builder builder, final OnResultListener onResultListener) {
         if (!NetworkUtils.isConnected()) {
             ToastUtils.showLongToastSafe(R.string.current_internet_invalid);
-            onResultListener.onFailure("");
+            onResultListener.onFailure(Utils.getString(R.string.current_internet_invalid));
             return;
         }
         mCall.enqueue(new Callback<ResponseBody>() {
@@ -230,7 +230,7 @@ public class HttpClient {
      * url is required before calling. All other methods are optional.
      */
     public static final class Builder {
-        private String builderBaseUrl = BASE_URL;
+        private String builderBaseUrl = "";
         private String url;
         private Object tag;
         private Map<String, String> params = new HashMap<>();
@@ -243,14 +243,10 @@ public class HttpClient {
         }
 
         /**
-         * 如需设置baseUrl请使用这种方法：HttpClient.BASE_URL = "https://10.33.31.200:8890/";
-         * 不推荐使用下面的方法改变baseUrl的值。
          * 请求地址的baseUrl，最后会被赋值给HttpClient的静态变量BASE_URL；
-         * 例如："https://10.33.31.200:8890/"
          *
          * @param baseUrl 请求地址的baseUrl
          */
-        @Deprecated
         public Builder baseUrl(String baseUrl) {
             this.builderBaseUrl = baseUrl;
             return this;
