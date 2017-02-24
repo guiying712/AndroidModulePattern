@@ -35,7 +35,7 @@ public class GirlsView extends FrameLayout implements GirlsContract.View, SwipeR
     private GirlsAdapter mAdapter;
     private ArrayList<Girls> mData;
     private int page = 1;
-    private int size = 20;
+    private int size = 10;
 
     public GirlsView(Context context) {
         super(context);
@@ -135,7 +135,7 @@ public class GirlsView extends FrameLayout implements GirlsContract.View, SwipeR
 
     @Override
     public void onLoadMore() {
-        if (mData.size() % 20 == 0) {
+        if (mData.size() % size == 0) {
             page++;
             mPresenter.getGirls(size, page, false);
         }
