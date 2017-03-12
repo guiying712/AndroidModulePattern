@@ -37,4 +37,6 @@ dependencies {
     //不稳定的
     compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
     compile "com.jude:easyrecyclerview:$rootProject.easyRecyclerVersion"
+
+    compile 'com.github.GrenderG:Toasty:1.1.3'
 }

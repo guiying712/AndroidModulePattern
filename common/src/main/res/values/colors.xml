@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--APP的主题色-->
-    <color name="colorPrimary">#3f85e4</color>
-    <color name="colorPrimaryDark">#3f85e4</color>
-    <color name="colorAccent">#3f85e4</color>
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorAccent">#FF5252</color>
 
     <!--APP公用的一些颜色-->
     <color name="common_bg">#fff7f7f7</color>
@@ -63,8 +63,4 @@
     <color name="gray_fc">#fffcfcfc</color>
     <color name="gray_e0">#e0e0e0</color>
 
-    <!--消息中心-->
-    <color name="red_common">#dfca2c32</color>
-    <color name="message_detail_rb_red">#f74248</color>
-    <color name="message_detail_divider">#e1e3e6</color>
 </resources>
