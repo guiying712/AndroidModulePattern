@@ -10,4 +10,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!" />
+
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        style="@android:style/Theme.Holo.Light">
+
+    </DatePicker>
+
 </RelativeLayout>

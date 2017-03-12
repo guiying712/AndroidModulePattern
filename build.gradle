@@ -43,7 +43,7 @@ ext {
     javaVersion = JavaVersion.VERSION_1_8
 
     // App dependencies version
-    supportLibraryVersion = "25.1.0"
+    supportLibraryVersion = "25.2.0"
     retrofitVersion = "2.1.0"
     glideVersion = "3.7.0"
     loggerVersion = "1.15"
