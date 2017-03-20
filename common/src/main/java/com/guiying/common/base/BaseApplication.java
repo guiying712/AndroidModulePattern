@@ -1,6 +1,7 @@
 package com.guiying.common.base;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
@@ -111,8 +112,9 @@ public class BaseApplication extends Application {
     public void exitApp(Context context) {
         try {
             finishAllActivity();
-            android.app.ActivityManager activityMgr = (android.app.ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-            activityMgr.restartPackage(context.getPackageName());
+            //杀死后台进程需要在AndroidManifest中声明android.permission.KILL_BACKGROUND_PROCESSES；
+            ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+            activityManager.killBackgroundProcesses(context.getPackageName());
             System.exit(0);
         } catch (Exception e) {
             Log.e("ActivityManager", "app exit" + e.getMessage());
