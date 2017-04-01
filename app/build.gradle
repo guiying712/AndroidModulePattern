@@ -53,6 +53,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     if (!isModule.toBoolean()) {
+        compile project(':main')
         compile project(':girls')
         compile project(':news')
     } else {

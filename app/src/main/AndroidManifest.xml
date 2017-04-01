@@ -9,6 +9,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--声明整个应用程序的路由协议-->
         <activity
             android:name="com.github.mzule.activityrouter.router.RouterActivity"
             android:theme="@android:style/Theme.NoDisplay">
@@ -22,13 +24,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
