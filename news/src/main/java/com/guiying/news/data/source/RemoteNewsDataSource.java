@@ -1,57 +1,46 @@
-package debug;
+package com.guiying.news.data.source;
 
-import com.guiying.common.base.BaseApplication;
 import com.guiying.common.http.HttpClient;
+import com.guiying.common.http.InfoCallback;
 import com.guiying.common.http.OnResultListener;
 import com.guiying.news.Constants;
+import com.guiying.news.data.NewsDataSource;
 import com.guiying.news.data.bean.StoryList;
-import com.orhanobut.logger.Logger;
 
 import static com.guiying.common.http.HttpClient.OBJECT;
 
 /**
  * <p>类说明</p>
  *
- * @author 张华洋 2017/2/15 20:11
+ * @author 张华洋 2017/4/20 23:32
  * @version V1.2.0
- * @name NewsApplication
+ * @name RemoteNewsDataSource
  */
-public class NewsApplication extends BaseApplication {
+public class RemoteNewsDataSource implements NewsDataSource {
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        login();
-    }
-
-
-    /**
-     * 在这里模拟登陆，然后拿到sessionId或者Token
-     * 这样就能够在组件请求接口了
-     */
-    private void login() {
+    public void getNewsList(String date, final InfoCallback<StoryList> callback) {
         HttpClient client = new HttpClient.Builder()
                 .baseUrl(Constants.ZHIHU_DAILY_BEFORE_MESSAGE)
-                .url("20170419")
+                .url(date)
                 .bodyType(OBJECT, StoryList.class)
                 .build();
         client.get(new OnResultListener<StoryList>() {
 
             @Override
             public void onSuccess(StoryList result) {
-                Logger.e(result.toString());
+                callback.onSuccess(result);
             }
 
             @Override
             public void onError(int code, String message) {
-                Logger.e(message);
+                callback.onError(code, message);
             }
 
             @Override
             public void onFailure(String message) {
-                Logger.e(message);
+                callback.onError(0, message);
             }
         });
     }
-
 }

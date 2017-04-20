@@ -9,7 +9,6 @@ import com.github.mzule.activityrouter.annotation.Module;
  * @version V1.2.0
  * @name news
  */
-
 @Module("news")
 public class News {
 }

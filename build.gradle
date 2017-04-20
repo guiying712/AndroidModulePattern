@@ -53,6 +53,6 @@ ext {
     //不成熟开源库，需经常检查升级版本
     aptCompilerVersion = "1.1.7"
     routerVersion = "1.2.2"
-    easyRecyclerVersion = "4.3.8"
+    easyRecyclerVersion = "4.4.0"
     cookieVersion = "v1.0.1"
 }

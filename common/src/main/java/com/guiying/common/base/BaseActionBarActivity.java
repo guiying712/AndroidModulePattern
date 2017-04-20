@@ -38,6 +38,20 @@ public abstract class BaseActionBarActivity extends BaseActivity {
         }
     }
 
+
+    /**
+     * 更新标题
+     *
+     * @param title 标题
+     */
+    protected void setTitle(String title) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(title);
+        }
+    }
+
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();

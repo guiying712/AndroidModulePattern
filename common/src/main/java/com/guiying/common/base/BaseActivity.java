@@ -3,7 +3,9 @@ package com.guiying.common.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 /**
@@ -36,6 +38,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         //强制在基类Intent判空
         if (null != getIntent()) {
             handleIntent(getIntent());
+        }
+    }
+
+    protected void setToolbar(Toolbar toolbar, String title) {
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (null != actionBar) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            //actionBar.setDisplayShowTitleEnabled(false);//隐藏Title
+            actionBar.setTitle(title);
         }
     }
 

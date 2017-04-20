@@ -3,7 +3,8 @@
 
     <application android:theme="@style/AppTheme">
         <activity
-            android:name=".main.NewsActivity"
+            android:name=".main.NewsCenterActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
     </application>
 

@@ -318,7 +318,7 @@ public class HttpClient {
                 onResultListener.onSuccess(DataParseUtil.parseObject(data, clazz));
                 break;
             case ARRAY:
-                onResultListener.onSuccess(DataParseUtil.parseToArrayList(data, clazz));
+                onResultListener.onSuccess(DataParseUtil.parseToList(data, clazz));
                 break;
             case XML:
                 onResultListener.onSuccess(DataParseUtil.parseXml(data, clazz));
