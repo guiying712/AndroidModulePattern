@@ -1,3 +1,8 @@
+
+# 你知道吗？Github的star功能就像微信朋友圈中的 **“点赞”** 功能，如果你觉得我的代码对你有帮助，你可以帮我点个赞，随手**star**一下。
+<img src="screenshots/starmean.PNG" width=600></img>
+
+
 # AndroidModulePattern
 Android项目组件化示例代码
 
