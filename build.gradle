@@ -7,10 +7,10 @@ buildscript {
     }
 
     dependencies {
+        //classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
+        //$localGradlePluginVersion是gradle.properties中的数据
         classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
@@ -34,6 +34,7 @@ task clean(type: Delete) {
 // Define versions in a single place
 ext {
     // Sdk and tools
+    //localBuildToolsVersion是gradle.properties中的数据
     buildToolsVersion = localBuildToolsVersion
     compileSdkVersion = 25
     minSdkVersion = 15
