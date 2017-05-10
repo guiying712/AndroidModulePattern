@@ -17,13 +17,16 @@ Android项目组件化示例代码
 1. 声明应用的launcherActivity----->android.intent.category.LAUNCHER；
 2. 添加SplashActivity;
 3. 添加LoginActivity；
+4. 添加MainActivity；
 
 ### girls/news组件功能：
-1. 这两个组件都是业务组件，根据产品功能独立成一个模块；
+1. 这两个组件都是业务组件，根据产品的业务逻辑独立成一个组件；
 
 ### common组件功能：
 1. common组件是基础库，添加一些公用的类；
 2. 例如：网络请求、图片加载、工具类、base类等等；
+3. 声明APP需要的uses-permission；
+4. 定义全局通用的主题（Theme）；
 
 ## License
 
