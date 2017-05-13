@@ -1,5 +1,6 @@
 package com.guiying.common.http;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
@@ -37,16 +38,8 @@ import retrofit2.Retrofit;
 public class HttpClient {
 
     /*The certificate's password*/
-    private static final String STORE_PASS = "4444444";
-    private static final String STORE_ALIAS = "4444444";
-    /*返回数据为String*/
-    public static final int STRING = 0;
-    /*返回数据为json对象*/
-    public static final int OBJECT = 1;
-    /*返回数据为json数组*/
-    public static final int ARRAY = 2;
-    /*返回数据为xml类型*/
-    public static final int XML = 3;
+    private static final String STORE_PASS = "6666666";
+    private static final String STORE_ALIAS = "666666";
     /*用户设置的BASE_URL*/
     private static String BASE_URL = "";
     /*本地使用的baseUrl*/
@@ -147,7 +140,7 @@ public class HttpClient {
                 if (200 == response.code()) {
                     try {
                         String result = response.body().string();
-                        parseJson(result, builder.clazz, builder.bodyType, onResultListener);
+                        parseData(result, builder.clazz, builder.bodyType, onResultListener);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -235,8 +228,9 @@ public class HttpClient {
         private String url;
         private Object tag;
         private Map<String, String> params = new HashMap<>();
-        /*返回数据的类型*/
-        private int bodyType = STRING;
+        /*返回数据的类型,默认是string类型*/
+        @DataType.Type
+        private int bodyType = DataType.STRING;
         /*解析类*/
         private Class clazz;
 
@@ -255,7 +249,7 @@ public class HttpClient {
 
         /**
          * 除baseUrl以外的部分，
-         * 例如："msp/mobile/login"
+         * 例如："mobile/login"
          *
          * @param url path路径
          */
@@ -286,13 +280,13 @@ public class HttpClient {
         }
 
         /**
-         * 响应体类型设置
+         * 响应体类型设置,如果要响应体类型为STRING，请不要使用这个方法
          *
-         * @param bodyType 响应体类型，分别为STRING，OBJECT,ARRAY,XML
+         * @param bodyType 响应体类型，分别:STRING，JSON_OBJECT,JSON_ARRAY,XML
          * @param clazz    指定的解析类
          * @param <T>      解析类
          */
-        public <T> Builder bodyType(int bodyType, Class<T> clazz) {
+        public <T> Builder bodyType(@DataType.Type int bodyType, @NonNull Class<T> clazz) {
             this.bodyType = bodyType;
             this.clazz = clazz;
             return this;
@@ -309,19 +303,27 @@ public class HttpClient {
         }
     }
 
+    /**
+     * 数据解析方法
+     *
+     * @param data             要解析的数据
+     * @param clazz            解析类
+     * @param bodyType         解析数据类型
+     * @param onResultListener 回调方数据接口
+     */
     @SuppressWarnings("unchecked")
-    private void parseJson(String data, Class clazz, int bodyType, OnResultListener onResultListener) {
+    private void parseData(String data, Class clazz, @DataType.Type int bodyType, OnResultListener onResultListener) {
         switch (bodyType) {
-            case STRING:
+            case DataType.STRING:
                 onResultListener.onSuccess(data);
                 break;
-            case OBJECT:
+            case DataType.JSON_OBJECT:
                 onResultListener.onSuccess(DataParseUtil.parseObject(data, clazz));
                 break;
-            case ARRAY:
-                onResultListener.onSuccess(DataParseUtil.parseToList(data, clazz));
+            case DataType.JSON_ARRAY:
+                onResultListener.onSuccess(DataParseUtil.parseToArrayList(data, clazz));
                 break;
-            case XML:
+            case DataType.XML:
                 onResultListener.onSuccess(DataParseUtil.parseXml(data, clazz));
                 break;
             default:
