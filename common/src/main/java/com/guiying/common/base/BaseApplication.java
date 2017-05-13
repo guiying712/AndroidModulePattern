@@ -115,7 +115,7 @@ public class BaseApplication extends Application {
             //杀死后台进程需要在AndroidManifest中声明android.permission.KILL_BACKGROUND_PROCESSES；
             ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
             activityManager.killBackgroundProcesses(context.getPackageName());
-            System.exit(0);
+            //System.exit(0);
         } catch (Exception e) {
             Log.e("ActivityManager", "app exit" + e.getMessage());
         }

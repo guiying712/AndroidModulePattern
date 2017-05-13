@@ -38,6 +38,7 @@ public class HttpClient {
 
     /*The certificate's password*/
     private static final String STORE_PASS = "4444444";
+    private static final String STORE_ALIAS = "4444444";
     /*返回数据为String*/
     public static final int STRING = 0;
     /*返回数据为json对象*/
@@ -74,11 +75,11 @@ public class HttpClient {
 
     private HttpClient() {
         ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(Utils.getContext()));
-        //HttpsUtil.SSLParams sslParams = HttpsUtil.getSslSocketFactory(Utils.getContext(), new int[0], , STORE_PASS);
+        //HttpsUtil.SSLParams sslParams = HttpsUtil.getSslSocketFactory(Utils.getContext(), R.raw.cer,STORE_PASS , STORE_ALIAS);
         okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 //.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
-                .hostnameVerifier(HttpsUtil.getHostnameVerifier())
+                // .hostnameVerifier(HttpsUtil.getHostnameVerifier())
                 .addInterceptor(new LoggerInterceptor(null, true))
                 .cookieJar(cookieJar)
                 .build();
