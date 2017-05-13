@@ -1,13 +1,12 @@
 package com.guiying.news.data.source;
 
+import com.guiying.common.http.DataType;
 import com.guiying.common.http.HttpClient;
 import com.guiying.common.http.InfoCallback;
 import com.guiying.common.http.OnResultListener;
 import com.guiying.news.Constants;
 import com.guiying.news.data.NewsDataSource;
 import com.guiying.news.data.bean.StoryList;
-
-import static com.guiying.common.http.HttpClient.OBJECT;
 
 /**
  * <p>类说明</p>
@@ -23,7 +22,7 @@ public class RemoteNewsDataSource implements NewsDataSource {
         HttpClient client = new HttpClient.Builder()
                 .baseUrl(Constants.ZHIHU_DAILY_BEFORE_MESSAGE)
                 .url(date)
-                .bodyType(OBJECT, StoryList.class)
+                .bodyType(DataType.JSON_OBJECT, StoryList.class)
                 .build();
         client.get(new OnResultListener<StoryList>() {
 

@@ -1,13 +1,12 @@
 package debug;
 
 import com.guiying.common.base.BaseApplication;
+import com.guiying.common.http.DataType;
 import com.guiying.common.http.HttpClient;
 import com.guiying.common.http.OnResultListener;
 import com.guiying.news.Constants;
 import com.guiying.news.data.bean.StoryList;
 import com.orhanobut.logger.Logger;
-
-import static com.guiying.common.http.HttpClient.OBJECT;
 
 /**
  * <p>类说明</p>
@@ -33,7 +32,7 @@ public class NewsApplication extends BaseApplication {
         HttpClient client = new HttpClient.Builder()
                 .baseUrl(Constants.ZHIHU_DAILY_BEFORE_MESSAGE)
                 .url("20170419")
-                .bodyType(OBJECT, StoryList.class)
+                .bodyType(DataType.JSON_OBJECT, StoryList.class)
                 .build();
         client.get(new OnResultListener<StoryList>() {
 

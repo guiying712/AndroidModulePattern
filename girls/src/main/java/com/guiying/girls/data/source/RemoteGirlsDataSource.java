@@ -1,13 +1,13 @@
 package com.guiying.girls.data.source;
 
 
+import com.guiying.common.http.DataType;
 import com.guiying.common.http.HttpClient;
 import com.guiying.common.http.OnResultListener;
 import com.guiying.girls.Constants;
 import com.guiying.girls.data.GirlsDataSource;
 import com.guiying.girls.data.parser.GirlsParser;
 
-import static com.guiying.common.http.HttpClient.OBJECT;
 
 
 public class RemoteGirlsDataSource implements GirlsDataSource {
@@ -17,7 +17,7 @@ public class RemoteGirlsDataSource implements GirlsDataSource {
         HttpClient client = new HttpClient.Builder()
                 .baseUrl(Constants.GAN_HUO_API)
                 .url("福利/" + size + "/" + page)
-                .bodyType(OBJECT, GirlsParser.class)
+                .bodyType(DataType.JSON_OBJECT, GirlsParser.class)
                 .build();
         client.get(new OnResultListener<GirlsParser>() {
 
