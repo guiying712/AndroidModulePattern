@@ -39,7 +39,7 @@ android {
             // 缩减resource文件
             shrinkResources true
             //Proguard
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //签名
             signingConfig signingConfigs.release

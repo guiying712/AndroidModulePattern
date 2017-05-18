@@ -1,7 +1,6 @@
 package com.guiying.androidmodulepattern;
 
 import android.content.Context;
-import android.support.multidex.MultiDex;
 
 import com.github.mzule.activityrouter.annotation.Modules;
 import com.guiying.common.base.BaseApplication;
@@ -26,6 +25,6 @@ public class MyApplication extends BaseApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         // dex突破65535的限制
-        MultiDex.install(this);
+        //MultiDex.install(this);
     }
 }
