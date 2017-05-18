@@ -1,11 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
-def buildTime() {
+static def buildTime() {
     return new Date().format("yyyyMMdd");
 }
 
 android {
+    signingConfigs {
+        release {
+//            keyAlias ''
+//            keyPassword ''
+//            storeFile file('')
+//            storePassword ''
+        }
+    }
+
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
@@ -14,7 +23,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
-        //multiDexEnabled true
+        multiDexEnabled true
         //打包时间
         resValue "string", "build_time", buildTime()
     }
@@ -33,7 +42,7 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //签名
-            //signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
 
         debug {
@@ -47,17 +56,22 @@ android {
             debuggable true
         }
     }
+
+    //执行lint检查，有任何的错误或者警告提示，都会终止构建，可以将其关掉
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
-    if (!isModule.toBoolean()) {
-        compile project(':main')
-        compile project(':girls')
-        compile project(':news')
+    if (isModule.toBoolean()) {
+        compile project(':lib_common')
     } else {
-        compile project(':common')
+        compile project(':module_main')
+        compile project(':module_girls')
+        compile project(':module_news')
     }
     //router
     apt "com.github.mzule.activityrouter:compiler:$rootProject.aptCompilerVersion"

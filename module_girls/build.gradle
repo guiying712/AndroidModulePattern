@@ -19,17 +19,32 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            // 不显示Log
+            buildConfigField "boolean", "LEO_DEBUG", "false"
+            //是否zip对齐
+            zipAlignEnabled true
+            // 缩减resource文件
+            shrinkResources true
+            //Proguard
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            zipAlignEnabled false
+            shrinkResources false
+            minifyEnabled false
+            debuggable true
         }
     }
 
     sourceSets {
         main {
             if (isModule.toBoolean()) {
-                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
             } else {
-                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+                manifest.srcFile 'src/main/AndroidManifest.xml'
                 //release模式下排除debug文件夹中的所有Java文件
                 java {
                     exclude 'debug/**'
@@ -40,11 +55,17 @@ android {
     //设置了resourcePrefix值后，所有的资源名必须以指定的字符串做前缀，否则会报错。
     //但是resourcePrefix这个值只能限定xml里面的资源，并不能限定图片资源，所有图片资源仍然需要手动去修改资源名。
     //resourcePrefix "girls_"
+
+    //执行lint检查，有任何的错误或者警告提示，都会终止构建，可以将其关掉
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':common')
+    compile project(':lib_common')
     //router
     apt "com.github.mzule.activityrouter:compiler:$rootProject.aptCompilerVersion"
 }
