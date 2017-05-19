@@ -41,7 +41,7 @@ public class GirlsView extends FrameLayout implements GirlsContract.View, SwipeR
     private GirlsAdapter mAdapter;
     private ArrayList<Girls> mData;
     private int page = 1;
-    private int size = 10;
+    private int size = 20;
 
     public GirlsView(Context context) {
         super(context);
