@@ -23,7 +23,11 @@
                 <data android:scheme="@string/global_scheme" /> <!-- 改成自己的scheme -->
             </intent-filter>
         </activity>
-
+        <!--发送崩溃日志界面-->
+        <activity
+            android:name="org.acra.CrashReportDialog"
+            android:excludeFromRecents="true"
+            android:finishOnTaskLaunch="true" />
     </application>
 
 </manifest>
