@@ -6,7 +6,7 @@ import com.guiying.common.http.HttpClient;
 import com.guiying.common.http.OnResultListener;
 import com.guiying.girls.Constants;
 import com.guiying.girls.data.GirlsDataSource;
-import com.guiying.girls.data.parser.GirlsParser;
+import com.guiying.girls.data.bean.GirlsParser;
 
 
 

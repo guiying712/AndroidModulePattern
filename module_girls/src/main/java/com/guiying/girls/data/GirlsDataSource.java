@@ -1,6 +1,6 @@
 package com.guiying.girls.data;
 
-import com.guiying.girls.data.parser.GirlsParser;
+import com.guiying.girls.data.bean.GirlsParser;
 
 public interface GirlsDataSource {
 

@@ -1,6 +1,4 @@
-package com.guiying.girls.data.parser;
-
-import com.guiying.girls.data.bean.Girls;
+package com.guiying.girls.data.bean;
 
 import java.util.List;
 

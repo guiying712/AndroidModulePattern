@@ -1,7 +1,7 @@
 package com.guiying.girls.main;
 
 import com.guiying.girls.data.GirlsDataSource;
-import com.guiying.girls.data.parser.GirlsParser;
+import com.guiying.girls.data.bean.GirlsParser;
 import com.guiying.girls.data.source.RemoteGirlsDataSource;
 
 /**

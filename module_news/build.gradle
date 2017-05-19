@@ -15,28 +15,6 @@ android {
         versionName rootProject.ext.versionName
     }
 
-    buildTypes {
-        release {
-            // 不显示Log
-            buildConfigField "boolean", "LEO_DEBUG", "false"
-            //是否zip对齐
-            zipAlignEnabled true
-            // 缩减resource文件
-            shrinkResources true
-            //Proguard
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-            zipAlignEnabled false
-            shrinkResources false
-            minifyEnabled false
-            debuggable true
-        }
-    }
-
     sourceSets {
         main {
             if (isModule.toBoolean()) {
