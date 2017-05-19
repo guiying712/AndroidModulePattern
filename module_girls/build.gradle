@@ -4,8 +4,6 @@ if (isModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 
-apply plugin: 'com.neenbedankt.android-apt'
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -56,16 +54,13 @@ android {
     //但是resourcePrefix这个值只能限定xml里面的资源，并不能限定图片资源，所有图片资源仍然需要手动去修改资源名。
     //resourcePrefix "girls_"
 
-    //执行lint检查，有任何的错误或者警告提示，都会终止构建，可以将其关掉
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
+
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':lib_common')
     //router
-    apt "com.github.mzule.activityrouter:compiler:$rootProject.aptCompilerVersion"
+    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
+    annotationProcessor "com.github.mzule.activityrouter:compiler:$rootProject.compilerVersion"
 }

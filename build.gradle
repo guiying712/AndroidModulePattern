@@ -10,7 +10,6 @@ buildscript {
         //classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
         //$localGradlePluginVersion是gradle.properties中的数据
         classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
 
@@ -52,8 +51,10 @@ ext {
     gsonVersion = "2.8.0"
 
     //不成熟开源库，需经常检查升级版本
-    aptCompilerVersion = "1.1.7"
+    compilerVersion = "1.1.7"
     routerVersion = "1.2.2"
     easyRecyclerVersion = "4.4.0"
     cookieVersion = "v1.0.1"
+
+    toastyVersion = "1.1.3"
 }

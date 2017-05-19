@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 static def buildTime() {
     return new Date().format("yyyyMMdd");
@@ -57,11 +56,7 @@ android {
         }
     }
 
-    //执行lint检查，有任何的错误或者警告提示，都会终止构建，可以将其关掉
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
+
 }
 
 dependencies {
@@ -74,5 +69,6 @@ dependencies {
         compile project(':module_news')
     }
     //router
-    apt "com.github.mzule.activityrouter:compiler:$rootProject.aptCompilerVersion"
+    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
+    annotationProcessor "com.github.mzule.activityrouter:compiler:$rootProject.compilerVersion"
 }
