@@ -28,7 +28,8 @@ public class NewsCenterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_news);
         mToolBar = (Toolbar) findViewById(R.id.news_title_bar);
-        setToolbar(mToolBar, "知乎日报");
+        mToolBar.setTitle("知乎日报");
+        setupToolBar(mToolBar, false);
         mTabLayout = (TabLayout) findViewById(R.id.date_tab);
         mViewPager = (ViewPager) findViewById(R.id.message_pager);
         mListAdapter = new NewsListViewAdapter(getMessageListViews(), getWeekDate());

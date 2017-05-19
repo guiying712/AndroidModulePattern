@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffff">
+    android:background="#ffffff">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/news_title_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorPrimary"
+            android:theme="@style/Toolbar"
             app:layout_scrollFlags="scroll|enterAlways" />
 
         <android.support.design.widget.TabLayout
@@ -29,7 +31,7 @@
         android:id="@+id/message_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffff"
+        android:background="#ffffff"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 

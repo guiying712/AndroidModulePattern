@@ -22,39 +22,39 @@ import android.support.v7.app.ActionBar;
  */
 public abstract class BaseActionBarActivity extends BaseActivity {
 
-    protected abstract
-    @StringRes
-    int setTitleId();
+    /*默认的ActionBar*/
+    protected ActionBar mActionBar;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //标题栏设置
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setTitle(setTitleId());
-        }
-    }
+    /**
+     * 设置默认标题id
+     *
+     * @return 标题id
+     */
+    @StringRes
+    protected abstract int setTitleId();
 
 
     /**
      * 更新标题
      *
-     * @param title 标题
+     * @param title String标题
      */
     protected void setTitle(String title) {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle(title);
+        if (mActionBar != null) {
+            mActionBar.setTitle(title);
         }
     }
 
-
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //标题栏设置
+        mActionBar = getSupportActionBar();
+        if (mActionBar != null) {
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+            mActionBar.setHomeButtonEnabled(true);
+            mActionBar.setTitle(setTitleId());
+        }
     }
+
 }

@@ -1,6 +1,5 @@
 package com.guiying.common.base;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.ActionBar;
@@ -18,10 +17,24 @@ import android.view.View;
 public abstract class BaseActivity extends AppCompatActivity {
 
     /**
-     * 处理Intent，防止开发人员没做Intent判空
+     * Setup the toolbar.
+     *
+     * @param toolbar   toolbar
+     * @param hideTitle 是否隐藏Title
      */
-    protected void handleIntent(Intent intent) {
+    protected void setupToolBar(Toolbar toolbar, boolean hideTitle) {
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            if (hideTitle) {
+                //隐藏Title
+                actionBar.setDisplayShowTitleEnabled(false);
+            }
+        }
     }
+
 
     /**
      * 封装的findViewByID方法
@@ -35,27 +48,19 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BaseApplication.getIns().addActivity(this);
-        //强制在基类Intent判空
-        if (null != getIntent()) {
-            handleIntent(getIntent());
-        }
     }
 
-    protected void setToolbar(Toolbar toolbar, String title) {
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (null != actionBar) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
-            //actionBar.setDisplayShowTitleEnabled(false);//隐藏Title
-            actionBar.setTitle(title);
-        }
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         BaseApplication.getIns().finishActivity(this);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }
