@@ -1,6 +1,7 @@
 package com.guiying.news.main;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
@@ -36,6 +37,11 @@ public class NewsListView extends EasyRecyclerView implements NewsListContract.V
     }
 
     private void initView() {
+        setRefreshingColor(
+                ContextCompat.getColor(getContext(), R.color.colorPrimary),
+                ContextCompat.getColor(getContext(), android.R.color.holo_blue_light),
+                ContextCompat.getColor(getContext(), android.R.color.holo_green_light)
+        );
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         setLayoutManager(layoutManager);
         DividerDecoration dividerDecoration = new DividerDecoration(getResources().getColor(R.color.gray_e0), 20, 20, 0);

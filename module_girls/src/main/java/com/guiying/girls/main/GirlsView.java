@@ -1,6 +1,7 @@
 package com.guiying.girls.main;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
@@ -52,14 +53,16 @@ public class GirlsView extends FrameLayout implements GirlsContract.View, SwipeR
         inflate(getContext(), R.layout.view_girls_content, this);
         mNetworkErrorLayout = (ViewStub) findViewById(R.id.network_error_layout);
         mGirlsRecyclerView = (EasyRecyclerView) findViewById(R.id.girls_recycler_view);
-
-        mData = new ArrayList<>();
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mGirlsRecyclerView.setLayoutManager(staggeredGridLayoutManager);
         mAdapter = new GirlsAdapter(getContext());
 
         mGirlsRecyclerView.setAdapterWithProgress(mAdapter);
-
+        mGirlsRecyclerView.setRefreshingColor(
+                ContextCompat.getColor(getContext(), R.color.colorPrimary),
+                ContextCompat.getColor(getContext(), android.R.color.holo_blue_light),
+                ContextCompat.getColor(getContext(), android.R.color.holo_green_light)
+        );
         mAdapter.setMore(R.layout.layout_load_more, this);
         mAdapter.setNoMore(R.layout.layout_load_no_more);
         mAdapter.setError(R.layout.layout_load_error);
@@ -72,6 +75,7 @@ public class GirlsView extends FrameLayout implements GirlsContract.View, SwipeR
 
         mGirlsRecyclerView.setRefreshListener(this);
 
+        mData = new ArrayList<>();
         mActive = true;
     }
 
