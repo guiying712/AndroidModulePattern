@@ -3,4 +3,10 @@
 
     <string name="global_scheme">module</string>
 
+    <!-- 崩溃 -->
+    <string name="crash_toast_text">程序崩溃了</string>
+    <string name="crash_dialog_text">感谢您对我们的支持！</string>
+    <string name="crash_dialog_title">发送崩溃日志</string>
+    <string name="crash_dialog_ok_toast">发送成功</string>
+
 </resources>
