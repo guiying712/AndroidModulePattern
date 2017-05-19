@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.app.ActionBar;
 
+import com.guiying.common.R;
+
 /**
  * BaseActionBarActivity继承于BaseActivity，封装了actionBar的逻辑；
  * 继承于ActionBarBaseActivity的Activity都将默认带有ActionBar，并且只能使用AppTheme主题；
@@ -51,6 +53,7 @@ public abstract class BaseActionBarActivity extends BaseActivity {
         //标题栏设置
         mActionBar = getSupportActionBar();
         if (mActionBar != null) {
+            mActionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back);
             mActionBar.setDisplayHomeAsUpEnabled(true);
             mActionBar.setHomeButtonEnabled(true);
             mActionBar.setTitle(setTitleId());
