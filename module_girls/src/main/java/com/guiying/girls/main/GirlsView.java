@@ -1,6 +1,8 @@
 package com.guiying.girls.main;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -9,8 +11,11 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
 
+import com.guiying.common.utils.Utils;
+import com.guiying.girls.Constants;
 import com.guiying.girls.R;
 import com.guiying.girls.data.bean.Girls;
+import com.guiying.girls.girl.GirlActivity;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -69,7 +74,11 @@ public class GirlsView extends FrameLayout implements GirlsContract.View, SwipeR
         mAdapter.setOnMyItemClickListener(new GirlsAdapter.OnMyItemClickListener() {
             @Override
             public void onItemClick(int position, BaseViewHolder holder) {
-
+                Intent intent = new Intent(Utils.getActivity(GirlsView.this), GirlActivity.class);
+                intent.putParcelableArrayListExtra(Constants.INTENT_GIRLS, mData);
+                intent.putExtra(Constants.INTENT_INDEX, position);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(holder.itemView, holder.itemView.getWidth() / 2, holder.itemView.getHeight() / 2, 0, 0);
+                Utils.getActivity(GirlsView.this).startActivity(intent, options.toBundle());
             }
         });
 

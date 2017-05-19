@@ -5,6 +5,10 @@
         <activity
             android:name=".main.GirlsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".girl.GirlActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

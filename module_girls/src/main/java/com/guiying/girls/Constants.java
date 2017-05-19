@@ -10,4 +10,7 @@ public interface Constants {
      */
     String GAN_HUO_API = "http://gank.io/api/data/";
 
+    String INTENT_GIRLS = "girls";
+    String INTENT_INDEX = "index";
+
 }

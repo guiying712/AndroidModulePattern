@@ -12,9 +12,7 @@ import com.guiying.common.base.BaseApplication;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-
     private long exitTime = 0;
-
     protected Button newsButton;
     protected Button girlsButton;
 
