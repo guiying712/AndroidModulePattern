@@ -54,11 +54,6 @@
     public <init>(android.content.Context, android.util.AttributeSet, int);
 }
 
--keepclasseswithmembers class * {
-    public <init>(android.content.Context, android.util.AttributeSet);
-    public <init>(android.content.Context, android.util.AttributeSet, int);
-}
-
 # 这个主要是在layout 中写的onclick方法android:onclick="onClick"，不进行混淆
 -keepclassmembers class * extends android.app.Activity {
    public void *(android.view.View);
@@ -79,20 +74,6 @@
 # natvie 方法不混淆
 -keepclasseswithmembernames class * {
     native <methods>;
-}
-#litepal数据库不能被混淆
--keep class org.litepal.** {
-    *;
-}
--keep class * extends org.litepal.crud.DataSupport {
-    *;
-}
-
-#Glide不能被混淆
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
 }
 
 # 保持 Parcelable 不被混淆
@@ -115,11 +96,6 @@
     public static final int *;
 }
 
-# $是用来分割内嵌类与其母体的标志
--keep class **.R$* {
- *;
-}
-
 
 -keepclassmembers class * {
    public <init> (org.json.JSONObject);
@@ -138,6 +114,18 @@
 
 
 #---------------------------------第三方包-------------------------------
+#litepal数据库不能被混淆
+-keep class org.litepal.** {*;}
+-keep class * extends org.litepal.crud.DataSupport {*;}
+
+#Glide不能被混淆
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+
+
 #activityrouter
 -keep class com.github.mzule.activityrouter.router.** { *; }
 
