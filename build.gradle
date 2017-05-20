@@ -43,18 +43,18 @@ ext {
     javaVersion = JavaVersion.VERSION_1_8
 
     // App dependencies version
-    supportLibraryVersion = "25.3.0"
+    supportLibraryVersion = "25.3.1"
     retrofitVersion = "2.1.0"
     glideVersion = "3.7.0"
     loggerVersion = "1.15"
     eventbusVersion = "3.0.0"
     gsonVersion = "2.8.0"
+    photoViewVersion = "2.0.0"
 
-    //不成熟开源库，需经常检查升级版本
-    compilerVersion = "1.1.7"
+    //需检查升级版本
+    annotationProcessor = "1.1.7"
     routerVersion = "1.2.2"
     easyRecyclerVersion = "4.4.0"
     cookieVersion = "v1.0.1"
-
     toastyVersion = "1.1.3"
 }

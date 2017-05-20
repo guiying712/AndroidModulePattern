@@ -28,9 +28,11 @@ dependencies {
     compile "com.orhanobut:logger:$rootProject.loggerVersion"
     compile "org.greenrobot:eventbus:$rootProject.eventbusVersion"
     compile "com.google.code.gson:gson:$rootProject.gsonVersion"
-    //不稳定的
-    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
-    compile "com.jude:easyrecyclerview:$rootProject.easyRecyclerVersion"
+    compile "com.github.chrisbanes:PhotoView:$rootProject.photoViewVersion"
 
+    compile "com.jude:easyrecyclerview:$rootProject.easyRecyclerVersion"
     compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
+
+    //router
+    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
 }

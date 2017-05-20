@@ -49,12 +49,12 @@ public class MyApplication extends BaseApplication {
         ACRA.getErrorReporter().setReportSender(new CrashReportSender());
     }
 
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        // dex突破65535的限制
-        //MultiDex.install(this);
-    }
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        super.attachBaseContext(base);
+//        // dex突破65535的限制
+//        MultiDex.install(this);
+//    }
 
 
     /**

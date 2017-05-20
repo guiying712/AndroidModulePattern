@@ -38,8 +38,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    annotationProcessor "com.github.mzule.activityrouter:compiler:$rootProject.annotationProcessor"
     compile project(':lib_common')
-    //router
-    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
-    annotationProcessor "com.github.mzule.activityrouter:compiler:$rootProject.compilerVersion"
 }

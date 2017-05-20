@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.guiying.common.widget.PinchImageView;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.guiying.girls.R;
 import com.guiying.girls.data.bean.Girls;
 
@@ -50,8 +50,8 @@ public class GirlAdapter extends PagerAdapter {
     @Override
     public View instantiateItem(ViewGroup container, int position) {
         final String imageUrl = mData.get(position).getUrl();
-        View view = layoutInflater.inflate(R.layout.item_girl_detail, null, false);
-        PinchImageView imageView = (PinchImageView) view.findViewById(R.id.girl_image);
+        View view = layoutInflater.inflate(R.layout.item_girl_detail, container, false);
+        PhotoView imageView = (PhotoView) view.findViewById(R.id.girl_image);
         Glide.with(mContext)
                 .load(imageUrl)
                 .thumbnail(0.2f)

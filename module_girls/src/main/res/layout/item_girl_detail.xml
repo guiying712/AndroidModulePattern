@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <com.guiying.common.widget.PinchImageView
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/girl_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
