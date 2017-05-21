@@ -31,6 +31,7 @@ task clean(type: Delete) {
 }
 
 // Define versions in a single place
+//时间：2017.2.13；每次修改版本号都要添加修改时间
 ext {
     // Sdk and tools
     //localBuildToolsVersion是gradle.properties中的数据

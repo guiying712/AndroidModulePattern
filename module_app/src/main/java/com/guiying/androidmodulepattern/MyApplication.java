@@ -36,7 +36,7 @@ import org.acra.sender.ReportSenderException;
         resToastText = R.string.crash_toast_text,
         resDialogText = R.string.crash_dialog_text,
         resDialogTitle = R.string.crash_dialog_title)
-@Modules({"app", "main", "girls", "news"})
+@Modules({"main", "girls", "news"})
 public class MyApplication extends BaseApplication {
 
 
