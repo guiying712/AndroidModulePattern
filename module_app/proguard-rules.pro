@@ -110,12 +110,12 @@
     public boolean *(android.webkit.WebView, java.lang.String);
 }
 
-#---------------------------------实体类---------------------------------
+#---------------------------------业务组件实体类---------------------------------
 
 -keep class com.guiying.news.data.bean.** {*;}
 -keep class com.guiying.girls.data.bean.** {*;}
 
-#---------------------------------第三方包-------------------------------
+#---------------------------------第三方库及jar包-------------------------------
 #litepal数据库不能被混淆
 -keep class org.litepal.** {*;}
 -keep class * extends org.litepal.crud.DataSupport {*;}
