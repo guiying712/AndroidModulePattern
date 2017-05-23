@@ -26,6 +26,7 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
 import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
@@ -125,13 +126,18 @@ public class HttpsUtils {
 
 
     /**
-     * 主机名校验方法
+     * 主机名校验方法，请把”192.168.0.10”换成你们公司的主机IP：
      */
     public static HostnameVerifier getHostnameVerifier() {
         return new HostnameVerifier() {
             @Override
             public boolean verify(String hostname, SSLSession session) {
-                return hostname.equalsIgnoreCase(session.getPeerHost());
+                if ("192.168.0.10".equals(hostname)) {
+                    return true;
+                } else {
+                    HostnameVerifier hv = HttpsURLConnection.getDefaultHostnameVerifier();
+                    return hv.verify(hostname, session);
+                }
             }
         };
     }
