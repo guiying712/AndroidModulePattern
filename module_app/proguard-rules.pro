@@ -81,24 +81,27 @@
   public static final android.os.Parcelable$Creator *;
 }
 
+
 #不混淆Serializable接口的子类中指定的某些成员变量和方法
 -keepclassmembers class * implements java.io.Serializable {
     static final long serialVersionUID;
     private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
     private void writeObject(java.io.ObjectOutputStream);
     private void readObject(java.io.ObjectInputStream);
     java.lang.Object writeReplace();
     java.lang.Object readResolve();
 }
 
-# 不混淆R类里及其所有内部static类中的所有static变量字段
--keep public class com.guiying.androidmodulepattern.R$*{
-    public static final int *;
-}
-
 
 -keepclassmembers class * {
    public <init> (org.json.JSONObject);
+}
+
+
+# 不混淆R类里及其所有内部static类中的所有static变量字段，$是用来分割内嵌类与其母体的标志
+-keep public class **.R$*{
+   public static final int *;
 }
 
 #---------------------------------webview------------------------------------
@@ -116,6 +119,7 @@
 -keep class com.guiying.girls.data.bean.** {*;}
 
 #---------------------------------第三方库及jar包-------------------------------
+
 #litepal数据库不能被混淆
 -keep class org.litepal.** {*;}
 -keep class * extends org.litepal.crud.DataSupport {*;}
@@ -128,17 +132,41 @@
 }
 
 
+#PersistentCookieJar
+-dontwarn com.franmontiel.persistentcookiejar.**
+-keep class com.franmontiel.persistentcookiejar.**
+
+
 #activityrouter
 -keep class com.github.mzule.activityrouter.router.** { *; }
 
 #友盟统计
 -keep class com.umeng.analytics.** {*;}
 -dontwarn com.umeng.analytics.**
+#友盟推送
+-dontwarn com.taobao.**
+-dontwarn anet.channel.**
+-dontwarn anetwork.channel.**
+-dontwarn org.android.**
+-dontwarn org.apache.thrift.**
+-dontwarn com.xiaomi.**
+-dontwarn com.huawei.**
+-keep class com.taobao.** {*;}
+-keep class org.android.** {*;}
+-keep class anet.channel.** {*;}
+-keep class com.umeng.** {*;}
+-keep class com.xiaomi.** {*;}
+-keep class com.huawei.** {*;}
+-keep class org.apache.thrift.** {*;}
+-keep class com.alibaba.sdk.android.**{*;}
+-keep class com.ut.**{*;}
+-keep class com.ta.**{*;}
 
 
 #换肤框架的混淆文件
 -keep class solid.ren.skinlibrary.** {*;}
 -dontwarn solid.ren.skinlibrary.**
+
 
 #高德相关混淆文件
 #3D 地图
@@ -233,8 +261,6 @@
 #retrofit
 -dontwarn retrofit.**
 -keep class retrofit.** { *; }
--keepattributes Signature
--keepattributes Exceptions
 -dontwarn okio.**
 
 
