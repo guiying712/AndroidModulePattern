@@ -1,10 +1,12 @@
 
 # 应用截图
-![image](https://github.com/guiying712/AndroidModulePattern/blob/master/screenshots/Screenshot_1.png)
-
-![image](https://github.com/guiying712/AndroidModulePattern/blob/master/screenshots/Screenshot_2.png)
-
-![image](https://github.com/guiying712/AndroidModulePattern/blob/master/screenshots/Screenshot_3.png)
+<table>
+    <tr>
+        <td><img src="/screenshots/Screenshot_1.png"></td>
+        <td><img src="/screenshots/Screenshot_2.png"></td>
+        <td><img src="/screenshots/Screenshot_3.png"></td>
+    </tr>
+</table>
 
 # AndroidModulePattern
 Android项目组件化示例代码
