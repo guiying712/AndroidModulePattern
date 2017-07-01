@@ -1,4 +1,4 @@
-package com.guiying.common.http;
+package com.guiying.common.base;
 
 /**
  * <p>数据回调接口</p>

@@ -3,6 +3,8 @@ package com.guiying.common.utils;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.StringRes;
+import android.view.Gravity;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -263,6 +265,9 @@ public class ToastUtils {
         if (isJumpWhenMore) cancelToast();
         if (sToast == null) {
             sToast = Toast.makeText(Utils.getContext(), text, duration);
+            TextView tv = (TextView) sToast.getView().findViewById(android.R.id.message);
+            tv.setTextSize(18);
+            sToast.setGravity(Gravity.CENTER, 0, 0);
         } else {
             sToast.setText(text);
             sToast.setDuration(duration);
