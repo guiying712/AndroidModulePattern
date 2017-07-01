@@ -4,6 +4,8 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -50,7 +52,10 @@ public class NewsListViewAdapter extends PagerAdapter {
         if (mTabList == null) {
             return null;
         }
-        return mTabList.get(position);
+        Calendar displayDate = Calendar.getInstance();
+        displayDate.add(Calendar.DAY_OF_YEAR, -position);
+
+        return DateFormat.getDateInstance().format(displayDate.getTime());
     }
 
     /**

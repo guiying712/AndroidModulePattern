@@ -1,11 +1,12 @@
 package com.guiying.news.data.source;
 
+import com.guiying.common.base.InfoCallback;
 import com.guiying.common.http.DataType;
 import com.guiying.common.http.HttpClient;
-import com.guiying.common.http.InfoCallback;
 import com.guiying.common.http.OnResultListener;
 import com.guiying.news.Constants;
 import com.guiying.news.data.NewsDataSource;
+import com.guiying.news.data.bean.MessageDetail;
 import com.guiying.news.data.bean.StoryList;
 
 /**
@@ -42,4 +43,33 @@ public class RemoteNewsDataSource implements NewsDataSource {
             }
         });
     }
+
+
+    @Override
+    public void getNewsDetail(String id, final InfoCallback<MessageDetail> callback) {
+        HttpClient client = new HttpClient.Builder()
+                .baseUrl(Constants.ZHIHU_DAILY_BEFORE_MESSAGE_DETAIL)
+                .url(id)
+                .bodyType(DataType.JSON_OBJECT, MessageDetail.class)
+                .build();
+        client.get(new OnResultListener<MessageDetail>() {
+
+            @Override
+            public void onSuccess(MessageDetail result) {
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(int code, String message) {
+                callback.onError(code, message);
+            }
+
+            @Override
+            public void onFailure(String message) {
+                callback.onError(0, message);
+            }
+        });
+    }
+
+
 }

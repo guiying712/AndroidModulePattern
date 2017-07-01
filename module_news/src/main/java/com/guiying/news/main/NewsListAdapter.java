@@ -1,6 +1,8 @@
 package com.guiying.news.main;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.guiying.news.R;
 import com.guiying.news.data.bean.Story;
+import com.guiying.news.detail.NewsDetailActivity;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
@@ -44,7 +47,7 @@ public class NewsListAdapter extends RecyclerArrayAdapter<Story> {
         }
 
         @Override
-        public void setData(Story data) {
+        public void setData(final Story data) {
             super.setData(data);
             mTextView.setText(data.getTitle());
             Glide.with(getContext())
@@ -53,6 +56,14 @@ public class NewsListAdapter extends RecyclerArrayAdapter<Story> {
                     .crossFade()
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .into(mImageView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getContext(), NewsDetailActivity.class);
+                    intent.putExtra("id", data.getId());
+                    getContext().startActivity(intent);
+                }
+            });
         }
     }
 }

@@ -1,8 +1,8 @@
-package com.guiying.news.main;
+package com.guiying.news.detail;
 
 import com.guiying.common.base.InfoCallback;
 import com.guiying.news.data.NewsDataSource;
-import com.guiying.news.data.bean.StoryList;
+import com.guiying.news.data.bean.MessageDetail;
 import com.guiying.news.data.source.RemoteNewsDataSource;
 
 /**
@@ -12,12 +12,12 @@ import com.guiying.news.data.source.RemoteNewsDataSource;
  * @version V1.2.0
  * @name GirlsPresenter
  */
-public class NewsListPresenter implements NewsListContract.Presenter {
+public class NewsDetailPresenter implements NewsDetailContract.Presenter {
 
-    private NewsListContract.View mView;
+    private NewsDetailContract.View mView;
     private NewsDataSource mDataSource;
 
-    public NewsListPresenter(NewsListContract.View view) {
+    public NewsDetailPresenter(NewsDetailContract.View view) {
         mView = view;
         mDataSource = new RemoteNewsDataSource();
         mView.setPresenter(this);
@@ -28,13 +28,14 @@ public class NewsListPresenter implements NewsListContract.Presenter {
 
     }
 
+
     @Override
-    public void getNewMessages(int page, int size, String date) {
-        mDataSource.getNewsList(date, new InfoCallback<StoryList>() {
+    public void getNewsDetail(String newsId) {
+        mDataSource.getNewsDetail(newsId, new InfoCallback<MessageDetail>() {
             @Override
-            public void onSuccess(StoryList info) {
+            public void onSuccess(MessageDetail detail) {
                 if (mView.isActive()) {
-                    mView.showNewsList(info);
+                    mView.showNewsDetail(detail);
                 }
             }
 
@@ -44,4 +45,5 @@ public class NewsListPresenter implements NewsListContract.Presenter {
             }
         });
     }
+
 }

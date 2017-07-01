@@ -1,5 +1,5 @@
 <resources>
-    <string name="news_name">News</string>
+    <string name="news_name">News组件</string>
 
     <string name="news_activity_title">News</string>
 

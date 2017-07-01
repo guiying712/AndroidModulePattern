@@ -84,4 +84,19 @@ public class MessageDetail {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "MessageDetail{" +
+                "body='" + body + '\'' +
+                ", image_source='" + image_source + '\'' +
+                ", title='" + title + '\'' +
+                ", image='" + image + '\'' +
+                ", share_url='" + share_url + '\'' +
+                ", recommenders=" + recommenders +
+                ", ga_prefix='" + ga_prefix + '\'' +
+                ", type='" + type + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
 }
