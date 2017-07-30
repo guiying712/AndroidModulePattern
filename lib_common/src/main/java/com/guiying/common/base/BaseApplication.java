@@ -38,12 +38,8 @@ public class BaseApplication extends Application {
         super.onCreate();
         sInstance = this;
         Utils.init(this);
-        if (Utils.isAppDebug()) {
-            //只有debug模式才会打印日志
-            Logger.init("Petrel").logLevel(LogLevel.FULL);
-        } else {
-            Logger.init("Petrel").logLevel(LogLevel.NONE);
-        }
+
+        Logger.init("pattern").logLevel(LogLevel.FULL);
     }
 
     /**

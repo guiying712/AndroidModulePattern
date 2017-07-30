@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.WindowManager;
 
+import com.guiying.common.HackyViewPager;
 import com.guiying.common.base.BaseActivity;
 import com.guiying.girls.Constants;
 import com.guiying.girls.data.bean.Girls;
@@ -27,7 +28,7 @@ public class GirlActivity extends BaseActivity {
         if (getIntent() != null) {
             List<Girls> mData = getIntent().getParcelableArrayListExtra(Constants.INTENT_GIRLS);
             int mCurrentIndex = getIntent().getIntExtra(Constants.INTENT_INDEX, 0);
-            ViewPager viewPager = new ViewPager(this);
+            HackyViewPager viewPager = new HackyViewPager(this);
             setContentView(viewPager);
             GirlAdapter adapter = new GirlAdapter(this, mData);
             viewPager.setAdapter(adapter);
