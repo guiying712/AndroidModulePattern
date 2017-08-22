@@ -2,11 +2,11 @@ package com.guiying.girls.main;
 
 import android.os.Bundle;
 
-import com.github.mzule.activityrouter.annotation.Router;
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.guiying.common.base.BaseActionBarActivity;
 import com.guiying.girls.R;
 
-@Router("girls")
+@Route(path = "/girls/list")
 public class GirlsActivity extends BaseActionBarActivity {
 
     private GirlsView mView;

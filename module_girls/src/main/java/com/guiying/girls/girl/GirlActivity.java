@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.WindowManager;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.guiying.common.HackyViewPager;
 import com.guiying.common.base.BaseActivity;
 import com.guiying.girls.Constants;
@@ -18,6 +19,7 @@ import java.util.List;
  * @version V1.1
  * @name GirlActivity
  */
+@Route(path = "/girls/detail")
 public class GirlActivity extends BaseActivity {
 
     @Override

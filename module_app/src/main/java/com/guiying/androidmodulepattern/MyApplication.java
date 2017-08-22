@@ -1,9 +1,11 @@
 package com.guiying.androidmodulepattern;
 
 import android.content.Context;
+import android.support.multidex.MultiDex;
 
-import com.github.mzule.activityrouter.annotation.Modules;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.guiying.common.base.BaseApplication;
+import com.guiying.common.utils.Utils;
 
 import org.acra.ACRA;
 import org.acra.ReportField;
@@ -15,7 +17,7 @@ import org.acra.sender.ReportSender;
 import org.acra.sender.ReportSenderException;
 
 /**
- * <p>这里是整个组件化项目管理各个组件的地方，所有需要使用的组件必须在此声明</p>
+ * <p>这里仅需做一些初始化的工作</p>
  *
  * @author 张华洋 2017/2/15 20:14
  * @version V1.2.0
@@ -36,25 +38,31 @@ import org.acra.sender.ReportSenderException;
         resToastText = R.string.crash_toast_text,
         resDialogText = R.string.crash_dialog_text,
         resDialogTitle = R.string.crash_dialog_title)
-@Modules({"main", "girls", "news"})
 public class MyApplication extends BaseApplication {
 
 
     @Override
     public void onCreate() {
         super.onCreate();
+        if (Utils.isAppDebug()) {
+            //开启InstantRun之后，一定要在ARouter.init之前调用openDebug
+            ARouter.openDebug();
+            ARouter.openLog();
+        }
+        ARouter.init(this);
         //崩溃日志记录初始化
         ACRA.init(this);
         ACRA.getErrorReporter().removeAllReportSenders();
         ACRA.getErrorReporter().setReportSender(new CrashReportSender());
     }
 
-//    @Override
-//    protected void attachBaseContext(Context base) {
-//        super.attachBaseContext(base);
-//        // dex突破65535的限制
-//        MultiDex.install(this);
-//    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        // dex突破65535的限制
+        MultiDex.install(this);
+    }
 
 
     /**

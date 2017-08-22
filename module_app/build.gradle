@@ -22,7 +22,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
-        multiDexEnabled false
+        multiDexEnabled true
         //打包时间
         resValue "string", "build_time", buildTime()
     }
@@ -61,7 +61,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    annotationProcessor "com.github.mzule.activityrouter:compiler:$rootProject.annotationProcessor"
+    compile 'com.android.support:multidex:1.0.1'
     if (isModule.toBoolean()) {
         compile project(':lib_common')
     } else {
