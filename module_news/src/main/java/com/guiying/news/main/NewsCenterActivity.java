@@ -5,7 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
-import com.github.mzule.activityrouter.annotation.Router;
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.guiying.common.base.BaseActivity;
 import com.guiying.news.R;
 
@@ -15,7 +15,14 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-@Router("news")
+/**
+ * <p>类说明</p>
+ *
+ * @author 张华洋 2017/4/20 22:26
+ * @version V1.2.0
+ * @name NewsCenterActivity
+ */
+@Route(path = "/news/center")
 public class NewsCenterActivity extends BaseActivity {
 
     protected Toolbar mToolBar;

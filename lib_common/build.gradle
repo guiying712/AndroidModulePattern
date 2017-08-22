@@ -33,5 +33,5 @@ dependencies {
     compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
 
     //router
-    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
+    compile "com.alibaba:arouter-api:$rootProject.routerVersion"
 }

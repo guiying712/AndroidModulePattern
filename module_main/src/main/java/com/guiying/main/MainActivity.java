@@ -5,11 +5,18 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-import com.github.mzule.activityrouter.router.Routers;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.guiying.common.base.BaseActivity;
 import com.guiying.common.base.BaseApplication;
 import com.guiying.common.utils.ToastUtils;
 
+/**
+ * <p>类说明</p>
+ *
+ * @author 张华洋 2017/7/1 13:13
+ * @version V1.2.0
+ * @name MainActivity
+ */
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private long exitTime = 0;
@@ -29,9 +36,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.news_button) {
-            Routers.open(MainActivity.this, "module://news");
+            //跳转到NewsCenterActivity
+            ARouter.getInstance().build("/news/center").navigation();
         } else if (view.getId() == R.id.girls_button) {
-            Routers.open(MainActivity.this, "module://girls");
+            //跳转到GirlsActivity
+            ARouter.getInstance().build("/girls/list").navigation();
         }
     }
 

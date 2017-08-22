@@ -22,8 +22,6 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
  * @version V1.2.0
  * @name NewsListAdapter
  */
-
-
 public class NewsListAdapter extends RecyclerArrayAdapter<Story> {
 
     public NewsListAdapter(Context context) {

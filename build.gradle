@@ -52,9 +52,9 @@ ext {
     gsonVersion = "2.8.0"
     photoViewVersion = "2.0.0"
 
-    //需检查升级版本
-    annotationProcessor = "1.1.7"
-    routerVersion = "1.2.2"
+    //检查时间：2017.6.6
+    annotationProcessor = "1.0.3"
+    routerVersion = "1.2.1.1"
     easyRecyclerVersion = "4.4.0"
     cookieVersion = "v1.0.1"
     toastyVersion = "1.1.3"

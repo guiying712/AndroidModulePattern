@@ -2,6 +2,7 @@ package com.guiying.news.detail;
 
 import android.os.Bundle;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.guiying.common.base.BaseActivity;
 
 /**
@@ -11,6 +12,7 @@ import com.guiying.common.base.BaseActivity;
  * @version V1.2.0
  * @name NewsDetailActivity
  */
+@Route(path = "/news/detail")
 public class NewsDetailActivity extends BaseActivity {
 
     @Override

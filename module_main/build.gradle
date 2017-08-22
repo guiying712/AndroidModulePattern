@@ -13,6 +13,13 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+
+        //ARouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 
 
@@ -29,14 +36,11 @@ android {
             }
         }
     }
-    //设置了resourcePrefix值后，所有的资源名必须以指定的字符串做前缀，否则会报错。
-    //但是resourcePrefix这个值只能限定xml里面的资源，并不能限定图片资源，所有图片资源仍然需要手动去修改资源名。
-    //resourcePrefix "girls_"
 
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    annotationProcessor "com.github.mzule.activityrouter:compiler:$rootProject.annotationProcessor"
+    annotationProcessor "com.alibaba:arouter-compiler:$rootProject.annotationProcessor"
     compile project(':lib_common')
 }
