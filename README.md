@@ -22,7 +22,7 @@ Android组件化方案中的路由使用了ActivityRouter，但是因为Activity
 **1、首先打开Android项目的 gradle.properties 文件，然后将 isModule 改为你需要的开发模式，
 然后点击 "Sync Project" 按钮同步项目；**
 
-**2、![Image](develper.PNG) 在运行之前，请先按照图中选择一个能够运行的组件；**
+**2、![Image](/screenshots/develper.PNG) 在运行之前，请先按照图中选择一个能够运行的组件；**
 
 
 ## 组件功能介绍
