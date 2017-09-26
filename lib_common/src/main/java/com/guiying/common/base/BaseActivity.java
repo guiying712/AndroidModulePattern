@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.guiying.common.R;
+import com.guiying.common.utils.Utils;
 
 /**
  * <p>Activity基类 </p>
@@ -65,5 +66,64 @@ public abstract class BaseActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+    //添加fragment
+    protected void addFragment(BaseFragment fragment, @IdRes int frameId) {
+        Utils.checkNotNull(fragment);
+        getSupportFragmentManager().beginTransaction()
+                .add(frameId, fragment, fragment.getClass().getSimpleName())
+                .addToBackStack(fragment.getClass().getSimpleName())
+                .commitAllowingStateLoss();
+
+    }
+
+    //替换fragment
+    protected void replaceFragment(BaseFragment fragment, @IdRes int frameId) {
+        Utils.checkNotNull(fragment);
+        getSupportFragmentManager().beginTransaction()
+                .replace(frameId, fragment, fragment.getClass().getSimpleName())
+                .addToBackStack(fragment.getClass().getSimpleName())
+                .commitAllowingStateLoss();
+
+    }
+
+    //隐藏fragment
+    protected void hideFragment(BaseFragment fragment) {
+        Utils.checkNotNull(fragment);
+        getSupportFragmentManager().beginTransaction()
+                .hide(fragment)
+                .commitAllowingStateLoss();
+
+    }
+
+
+    //显示fragment
+    protected void showFragment(BaseFragment fragment) {
+        Utils.checkNotNull(fragment);
+        getSupportFragmentManager().beginTransaction()
+                .show(fragment)
+                .commitAllowingStateLoss();
+
+    }
+
+
+    protected void removeFragment(BaseFragment fragment) {
+        Utils.checkNotNull(fragment);
+        getSupportFragmentManager().beginTransaction()
+                .remove(fragment)
+                .commitAllowingStateLoss();
+
+    }
+
+
+    //移除fragment
+    protected void popFragment() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            finish();
+        }
+    }
+
 
 }
