@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.guiying.common">
+    package="com.guiying.module.common">
 
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -16,7 +16,7 @@
 
     <application>
         <meta-data
-            android:name="com.guiying.common.glide.OkHttpGlideModule"
+            android:name=".glide.OkHttpGlideModule"
             android:value="GlideModule" />
 
     </application>
