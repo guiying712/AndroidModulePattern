@@ -1,8 +1,8 @@
-package com.guiying.girls.main;
+package com.guiying.module.girls.main;
 
-import com.guiying.girls.data.GirlsDataSource;
-import com.guiying.girls.data.bean.GirlsParser;
-import com.guiying.girls.data.source.RemoteGirlsDataSource;
+import com.guiying.module.girls.data.GirlsDataSource;
+import com.guiying.module.girls.data.bean.GirlsParser;
+import com.guiying.module.girls.data.source.RemoteGirlsDataSource;
 
 /**
  * <p>类说明</p>

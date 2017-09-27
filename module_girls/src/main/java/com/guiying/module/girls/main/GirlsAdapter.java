@@ -1,4 +1,4 @@
-package com.guiying.girls.main;
+package com.guiying.module.girls.main;
 
 import android.content.Context;
 import android.view.View;
@@ -7,8 +7,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.guiying.girls.R;
-import com.guiying.girls.data.bean.Girls;
+import com.guiying.module.girls.R;
+import com.guiying.module.girls.data.bean.Girls;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 

@@ -1,4 +1,4 @@
-package com.guiying.girls.girl;
+package com.guiying.module.girls.girl;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.github.chrisbanes.photoview.PhotoView;
-import com.guiying.girls.R;
-import com.guiying.girls.data.bean.Girls;
+import com.guiying.module.girls.R;
+import com.guiying.module.girls.data.bean.Girls;
 
 import java.util.List;
 

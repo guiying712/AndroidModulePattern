@@ -1,14 +1,14 @@
-package com.guiying.girls.girl;
+package com.guiying.module.girls.girl;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.WindowManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.guiying.common.HackyViewPager;
-import com.guiying.common.base.BaseActivity;
-import com.guiying.girls.Constants;
-import com.guiying.girls.data.bean.Girls;
+import com.guiying.module.common.base.BaseActivity;
+import com.guiying.module.common.widget.HackyViewPager;
+import com.guiying.module.girls.Constants;
+import com.guiying.module.girls.data.bean.Girls;
 
 import java.util.List;
 

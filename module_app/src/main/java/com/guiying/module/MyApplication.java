@@ -1,11 +1,11 @@
-package com.guiying.androidmodulepattern;
+package com.guiying.module;
 
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.guiying.common.base.BaseApplication;
-import com.guiying.common.utils.Utils;
+import com.guiying.module.common.base.BaseApplication;
+import com.guiying.module.common.utils.Utils;
 
 import org.acra.ACRA;
 import org.acra.ReportField;

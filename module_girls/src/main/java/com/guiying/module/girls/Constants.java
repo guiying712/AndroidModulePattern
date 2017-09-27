@@ -1,4 +1,4 @@
-package com.guiying.girls;
+package com.guiying.module.girls;
 
 /**
  * 保存项目中用到的常量

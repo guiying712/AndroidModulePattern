@@ -1,8 +1,8 @@
-package com.guiying.girls.main;
+package com.guiying.module.girls.main;
 
-import com.guiying.common.base.BasePresenter;
-import com.guiying.common.base.BaseView;
-import com.guiying.girls.data.bean.Girls;
+import com.guiying.module.common.base.BasePresenter;
+import com.guiying.module.common.base.BaseView;
+import com.guiying.module.girls.data.bean.Girls;
 
 import java.util.List;
 

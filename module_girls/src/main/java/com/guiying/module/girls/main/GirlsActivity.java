@@ -1,10 +1,10 @@
-package com.guiying.girls.main;
+package com.guiying.module.girls.main;
 
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.guiying.common.base.BaseActionBarActivity;
-import com.guiying.girls.R;
+import com.guiying.module.common.base.BaseActionBarActivity;
+import com.guiying.module.girls.R;
 
 @Route(path = "/girls/list")
 public class GirlsActivity extends BaseActionBarActivity {

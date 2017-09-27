@@ -1,4 +1,4 @@
-package com.guiying.girls.data.bean;
+package com.guiying.module.girls.data.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;

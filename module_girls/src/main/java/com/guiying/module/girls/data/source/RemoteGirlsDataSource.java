@@ -1,12 +1,12 @@
-package com.guiying.girls.data.source;
+package com.guiying.module.girls.data.source;
 
 
-import com.guiying.common.http.DataType;
-import com.guiying.common.http.HttpClient;
-import com.guiying.common.http.OnResultListener;
-import com.guiying.girls.Constants;
-import com.guiying.girls.data.GirlsDataSource;
-import com.guiying.girls.data.bean.GirlsParser;
+import com.guiying.module.common.http.DataType;
+import com.guiying.module.common.http.HttpClient;
+import com.guiying.module.common.http.OnResultListener;
+import com.guiying.module.girls.Constants;
+import com.guiying.module.girls.data.GirlsDataSource;
+import com.guiying.module.girls.data.bean.GirlsParser;
 
 
 

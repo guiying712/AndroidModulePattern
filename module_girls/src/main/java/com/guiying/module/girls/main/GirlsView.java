@@ -1,4 +1,4 @@
-package com.guiying.girls.main;
+package com.guiying.module.girls.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
 
-import com.guiying.common.utils.Utils;
-import com.guiying.girls.Constants;
-import com.guiying.girls.R;
-import com.guiying.girls.data.bean.Girls;
-import com.guiying.girls.girl.GirlActivity;
+import com.guiying.module.common.utils.Utils;
+import com.guiying.module.girls.Constants;
+import com.guiying.module.girls.R;
+import com.guiying.module.girls.data.bean.Girls;
+import com.guiying.module.girls.girl.GirlActivity;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
