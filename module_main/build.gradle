@@ -20,6 +20,7 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
+        vectorDrawables.useSupportLibrary = true
     }
 
 
@@ -37,10 +38,13 @@ android {
         }
     }
 
+
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.annotationProcessor"
     compile project(':lib_common')
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:support-vector-drawable:25.3.1'
 }

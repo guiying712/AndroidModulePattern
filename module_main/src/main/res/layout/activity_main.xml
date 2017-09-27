@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.guiying.main.MainActivity">
+    tools:context="com.guiying.module.main.MainActivity">
 
     <Button
         android:id="@+id/news_button"
@@ -22,4 +22,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Girls" />
+
+    <Button
+        android:id="@+id/fragment_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fragment" />
+
 </LinearLayout>
