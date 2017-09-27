@@ -1,4 +1,4 @@
-package com.guiying.news.main;
+package com.guiying.module.news.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.guiying.news.R;
-import com.guiying.news.data.bean.Story;
-import com.guiying.news.detail.NewsDetailActivity;
+import com.guiying.module.news.R;
+import com.guiying.module.news.data.bean.Story;
+import com.guiying.module.news.detail.NewsDetailActivity;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 

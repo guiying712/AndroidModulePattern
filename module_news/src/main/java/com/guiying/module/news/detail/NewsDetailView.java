@@ -1,4 +1,4 @@
-package com.guiying.news.detail;
+package com.guiying.module.news.detail;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -17,8 +17,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.guiying.news.R;
-import com.guiying.news.data.bean.MessageDetail;
+import com.guiying.module.news.R;
+import com.guiying.module.news.data.bean.MessageDetail;
 
 /**
  * <p>类说明</p>

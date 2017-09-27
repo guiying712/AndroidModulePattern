@@ -1,4 +1,4 @@
-package com.guiying.news;
+package com.guiying.module.news;
 
 /**
  * 保存项目中用到的常量

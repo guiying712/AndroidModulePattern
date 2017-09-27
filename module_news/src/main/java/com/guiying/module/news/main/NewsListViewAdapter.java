@@ -1,4 +1,4 @@
-package com.guiying.news.main;
+package com.guiying.module.news.main;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;

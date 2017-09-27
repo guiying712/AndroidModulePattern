@@ -1,11 +1,11 @@
 package debug;
 
-import com.guiying.common.base.BaseApplication;
-import com.guiying.common.http.DataType;
-import com.guiying.common.http.HttpClient;
-import com.guiying.common.http.OnResultListener;
-import com.guiying.news.Constants;
-import com.guiying.news.data.bean.StoryList;
+import com.guiying.module.common.base.BaseApplication;
+import com.guiying.module.common.http.DataType;
+import com.guiying.module.common.http.HttpClient;
+import com.guiying.module.common.http.OnResultListener;
+import com.guiying.module.news.Constants;
+import com.guiying.module.news.data.bean.StoryList;
 import com.orhanobut.logger.Logger;
 
 /**

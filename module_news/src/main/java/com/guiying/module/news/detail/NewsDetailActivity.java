@@ -1,9 +1,9 @@
-package com.guiying.news.detail;
+package com.guiying.module.news.detail;
 
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.guiying.common.base.BaseActivity;
+import com.guiying.module.common.base.BaseActivity;
 
 /**
  * <p>类说明</p>

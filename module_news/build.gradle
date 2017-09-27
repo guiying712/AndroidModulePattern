@@ -42,4 +42,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.annotationProcessor"
     compile project(':lib_common')
+    compile 'com.android.support:support-v4:25.3.1'
 }

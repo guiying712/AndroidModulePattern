@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.guiying.news.detail.NewsDetailActivity;
+import com.guiying.module.news.detail.NewsDetailActivity;
 
 /**
  * <p>组件开发模式下，用于传递数据的启动Activity，集成模式下无效</p>

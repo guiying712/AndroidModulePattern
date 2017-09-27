@@ -1,4 +1,4 @@
-package com.guiying.news.main;
+package com.guiying.module.news.main;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -6,8 +6,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
 
-import com.guiying.news.R;
-import com.guiying.news.data.bean.StoryList;
+import com.guiying.module.news.R;
+import com.guiying.module.news.data.bean.StoryList;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.DividerDecoration;

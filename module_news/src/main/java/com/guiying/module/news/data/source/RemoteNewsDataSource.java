@@ -1,13 +1,13 @@
-package com.guiying.news.data.source;
+package com.guiying.module.news.data.source;
 
-import com.guiying.common.base.InfoCallback;
-import com.guiying.common.http.DataType;
-import com.guiying.common.http.HttpClient;
-import com.guiying.common.http.OnResultListener;
-import com.guiying.news.Constants;
-import com.guiying.news.data.NewsDataSource;
-import com.guiying.news.data.bean.MessageDetail;
-import com.guiying.news.data.bean.StoryList;
+import com.guiying.module.common.base.InfoCallback;
+import com.guiying.module.common.http.DataType;
+import com.guiying.module.common.http.HttpClient;
+import com.guiying.module.common.http.OnResultListener;
+import com.guiying.module.news.Constants;
+import com.guiying.module.news.data.NewsDataSource;
+import com.guiying.module.news.data.bean.MessageDetail;
+import com.guiying.module.news.data.bean.StoryList;
 
 /**
  * <p>类说明</p>

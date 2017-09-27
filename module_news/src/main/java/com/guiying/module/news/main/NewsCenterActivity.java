@@ -1,4 +1,4 @@
-package com.guiying.news.main;
+package com.guiying.module.news.main;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -6,8 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.guiying.common.base.BaseActivity;
-import com.guiying.news.R;
+import com.guiying.module.common.base.BaseActivity;
+import com.guiying.module.news.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

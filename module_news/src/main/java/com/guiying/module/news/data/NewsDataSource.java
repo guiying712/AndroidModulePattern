@@ -1,8 +1,8 @@
-package com.guiying.news.data;
+package com.guiying.module.news.data;
 
-import com.guiying.common.base.InfoCallback;
-import com.guiying.news.data.bean.MessageDetail;
-import com.guiying.news.data.bean.StoryList;
+import com.guiying.module.common.base.InfoCallback;
+import com.guiying.module.news.data.bean.MessageDetail;
+import com.guiying.module.news.data.bean.StoryList;
 
 /**
  * <p>类说明</p>

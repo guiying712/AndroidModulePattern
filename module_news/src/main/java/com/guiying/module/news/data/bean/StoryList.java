@@ -1,4 +1,4 @@
-package com.guiying.news.data.bean;
+package com.guiying.module.news.data.bean;
 
 import java.util.List;
 

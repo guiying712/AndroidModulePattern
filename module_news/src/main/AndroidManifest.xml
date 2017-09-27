@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.guiying.news">
+    package="com.guiying.module.news">
 
     <application android:theme="@style/AppTheme">
         <activity
