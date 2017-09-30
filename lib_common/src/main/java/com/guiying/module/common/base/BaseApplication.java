@@ -13,7 +13,6 @@ import java.util.List;
  * 组件中实现的Application必须在debug包中的AndroidManifest.xml中注册，否则无法使用；
  * 组件的Application需置于java/debug文件夹中，不得放于主代码；
  * 组件中获取Context的方法必须为:Utils.getContext()，不允许其他写法；
- * BaseApplication主要用来管理全局Activity;
  *
  * @author 2016/12/2 17:02
  * @version V1.0.0
@@ -25,7 +24,7 @@ public class BaseApplication extends Application {
 
     private static BaseApplication sInstance;
 
-    private List<ApplicationDelegate> delegateList;
+    private List<ApplicationDelegate> mAppDelegateList;
 
 
     public static BaseApplication getIns() {
@@ -36,12 +35,13 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        Logger.init("pattern").logLevel(LogLevel.FULL);
         Utils.init(this);
-        delegateList = ClassUtils.getObjectsWithInterface(this, ApplicationDelegate.class, ROOT_PACKAGE);
-        for (ApplicationDelegate delegate : delegateList) {
+        mAppDelegateList = ClassUtils.getObjectsWithInterface(this, ApplicationDelegate.class, ROOT_PACKAGE);
+        for (ApplicationDelegate delegate : mAppDelegateList) {
             delegate.onCreate();
         }
-        Logger.init("pattern").logLevel(LogLevel.FULL);
+
     }
 
 

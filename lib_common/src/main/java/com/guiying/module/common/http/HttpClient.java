@@ -141,7 +141,7 @@ public class HttpClient {
                     try {
                         String result = response.body().string();
                         parseData(result, builder.clazz, builder.bodyType, onResultListener);
-                    } catch (IOException e) {
+                    } catch (IOException | IllegalStateException e) {
                         e.printStackTrace();
                     }
                 }

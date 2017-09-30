@@ -10,12 +10,6 @@ public abstract class BaseFragment extends Fragment {
 
     protected BaseActivity mActivity;
 
-
-    //获取宿主Activity
-    protected BaseActivity getHoldingActivity() {
-        return mActivity;
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -23,33 +17,68 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-    //添加fragment
+    /**
+     * 获取宿主Activity
+     *
+     * @return BaseActivity
+     */
+    protected BaseActivity getHoldingActivity() {
+        return mActivity;
+    }
+
+
+    /**
+     * 添加fragment
+     *
+     * @param fragment
+     * @param frameId
+     */
     protected void addFragment(BaseFragment fragment, @IdRes int frameId) {
         Utils.checkNotNull(fragment);
         getHoldingActivity().addFragment(fragment, frameId);
 
     }
 
-    //替换fragment
+
+    /**
+     * 替换fragment
+     *
+     * @param fragment
+     * @param frameId
+     */
     protected void replaceFragment(BaseFragment fragment, @IdRes int frameId) {
         Utils.checkNotNull(fragment);
         getHoldingActivity().replaceFragment(fragment, frameId);
     }
 
-    //隐藏fragment
+
+    /**
+     * 隐藏fragment
+     *
+     * @param fragment
+     */
     protected void hideFragment(BaseFragment fragment) {
         Utils.checkNotNull(fragment);
         getHoldingActivity().hideFragment(fragment);
     }
 
 
-    //显示fragment
+    /**
+     * 显示fragment
+     *
+     * @param fragment
+     */
     protected void showFragment(BaseFragment fragment) {
         Utils.checkNotNull(fragment);
         getHoldingActivity().showFragment(fragment);
     }
 
 
+    /**
+     * 移除Fragment
+     *
+     * @param fragment
+     */
     protected void removeFragment(BaseFragment fragment) {
         Utils.checkNotNull(fragment);
         getHoldingActivity().removeFragment(fragment);
@@ -57,7 +86,9 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-    //移除fragment
+    /**
+     * 弹出栈顶部的Fragment
+     */
     protected void popFragment() {
         getHoldingActivity().popFragment();
     }

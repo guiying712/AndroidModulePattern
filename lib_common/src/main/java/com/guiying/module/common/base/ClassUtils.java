@@ -1,7 +1,5 @@
 package com.guiying.module.common.base;
 
-// Copy from galaxy sdk ${com.alibaba.android.galaxy.utils.ClassUtils}
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -9,7 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.guiying.module.common.utils.Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,17 +21,13 @@ import java.util.regex.Pattern;
 
 import dalvik.system.DexFile;
 
-import static com.alibaba.android.arouter.launcher.ARouter.logger;
-import static com.alibaba.android.arouter.utils.Consts.TAG;
-
 /**
+ * Copy from galaxy sdk ${com.alibaba.android.galaxy.utils.ClassUtils}
  * Scanner, find out class with any conditions, copy from google source code.
- *
- * @author 正纬 <a href="mailto:zhilong.liu@aliyun.com">Contact me.</a>
- * @version 1.0
- * @since 16/6/27 下午10:58
  */
 public class ClassUtils {
+    private static final String TAG = "ClassUtils";
+
     private static final String EXTRACTED_NAME_EXT = ".classes";
     private static final String EXTRACTED_SUFFIX = ".zip";
 
@@ -50,10 +44,19 @@ public class ClassUtils {
     }
 
 
+    /**
+     * 获取单一路径下所有实现了接口的类对象
+     *
+     * @param context U know
+     * @param clazz   接口
+     * @param path    包路径
+     * @param <T>     U know
+     * @return 对象列表
+     */
     public static <T> List<T> getObjectsWithInterface(Context context, Class<T> clazz, String path) {
         List<T> objectList = new ArrayList<>();
         try {
-            // These class was generate by arouter-compiler.
+            //找出所有路径中的类名，主要用于各个组件根包名一致的情况
             List<String> classFileNames = getFileNameByPackageName(context, path);
 
             for (String className : classFileNames) {
@@ -64,35 +67,48 @@ public class ClassUtils {
             }
 
             if (objectList.size() == 0) {
-                logger.error(TAG, "No files were found, check your configuration please!");
+                Log.e(TAG, "No files were found, check your configuration please!");
             }
         } catch (Exception e) {
             e.getStackTrace();
-            Log.e("ARouter", "getObjectsWithInterface error, " + e.getMessage());
+            Log.e(TAG, "getObjectsWithInterface error, " + e.getMessage());
         }
 
         return objectList;
     }
 
+
+    /**
+     * 获取多路径下所有实现了接口的类对象
+     *
+     * @param context  U know
+     * @param clazz    接口
+     * @param pathList 包路径列表
+     * @param <T>      U know
+     * @return 对象列表
+     */
     public static <T> List<T> getObjectsWithInterface(Context context, Class<T> clazz, List<String> pathList) {
         List<T> objectList = new ArrayList<>();
-//        try {
-//            // These class was generate by arouter-compiler.
-//            List<String> classFileNames = getFileNameByPackageName(context, path);
-//
-//            for (String className : classFileNames) {
-//                Class aClass = Class.forName(className);
-//                if (clazz.isAssignableFrom(aClass) && !clazz.equals(aClass) && !aClass.isInterface()) {
-//                    objectList.add((T) Class.forName(className).getConstructor().newInstance());
-//                }
-//            }
-//
-//            if (objectList.size() == 0) {
-//                logger.error(TAG, "No files were found, check your configuration please!");
-//            }
-//        } catch (Exception e) {
-//            e.getStackTrace();
-//        }
+        try {
+            for (String path : pathList) {
+                //找出所有路径中的类名，主要用于各个组件根包名不一致的情况
+                List<String> classFileNames = getFileNameByPackageName(context, path);
+
+                for (String className : classFileNames) {
+                    Class aClass = Class.forName(className);
+                    if (clazz.isAssignableFrom(aClass) && !clazz.equals(aClass) && !aClass.isInterface()) {
+                        objectList.add((T) Class.forName(className).getConstructor().newInstance());
+                    }
+                }
+            }
+
+            if (objectList.size() == 0) {
+                Log.e(TAG, "No files were found, check your configuration please!");
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+            Log.e(TAG, "getObjectsWithInterface error, " + e.getMessage());
+        }
 
         return objectList;
     }
@@ -125,7 +141,7 @@ public class ClassUtils {
                     }
                 }
             } catch (Throwable ignore) {
-                Log.e("ARouter", "Scan map file in dex files made error.", ignore);
+                Log.e(TAG, "Scan map file in dex files made error.", ignore);
             } finally {
                 if (null != dexfile) {
                     try {
@@ -136,7 +152,7 @@ public class ClassUtils {
             }
         }
 
-        Log.d("ARouter", "Filter " + classNames.size() + " classes by packageName <" + packageName + ">");
+        Log.d(TAG, "Filter " + classNames.size() + " classes by packageName <" + packageName + ">");
         return classNames;
     }
 
@@ -145,8 +161,8 @@ public class ClassUtils {
      *
      * @param context the application context
      * @return all the dex path
-     * @throws PackageManager.NameNotFoundException
-     * @throws IOException
+     * @throws PackageManager.NameNotFoundException Exception
+     * @throws IOException                          Exception
      */
     public static List<String> getSourcePaths(Context context) throws PackageManager.NameNotFoundException, IOException {
         ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), 0);
@@ -158,8 +174,8 @@ public class ClassUtils {
         //the prefix of extracted file, ie: test.classes
         String extractedFilePrefix = sourceApk.getName() + EXTRACTED_NAME_EXT;
 
-//        如果VM已经支持了MultiDex，就不要去Secondary Folder加载 Classesx.zip了，那里已经么有了
-//        通过是否存在sp中的multidex.version是不准确的，因为从低版本升级上来的用户，是包含这个sp配置的
+        //如果VM已经支持了MultiDex，就不要去Secondary Folder加载 Classesx.zip了，那里已经么有了
+        //通过是否存在sp中的multidex.version是不准确的，因为从低版本升级上来的用户，是包含这个sp配置的
         if (!isVMMultidexCapable()) {
             //the total dex numbers
             int totalDexNumber = getMultiDexPreferences(context).getInt(KEY_DEX_NUMBER, 1);
@@ -178,7 +194,8 @@ public class ClassUtils {
             }
         }
 
-        if (ARouter.debuggable()) { // Search instant run support only debuggable
+        if (Utils.isAppDebug()) {
+            // Search instant run support only debuggable
             sourcePaths.addAll(tryLoadInstantRunDexFile(applicationInfo));
         }
         return sourcePaths;
@@ -193,7 +210,7 @@ public class ClassUtils {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && null != applicationInfo.splitSourceDirs) {
             // add the splite apk, normally for InstantRun, and newest version.
             instantRunSourcePaths.addAll(Arrays.asList(applicationInfo.splitSourceDirs));
-            Log.d("ARouter", "Found InstantRun support");
+            Log.d(TAG, "Found InstantRun support");
         } else {
             try {
                 // This man is reflection from Google instant run sdk, he will tell me where the dex files go.
@@ -209,11 +226,11 @@ public class ClassUtils {
                             instantRunSourcePaths.add(file.getAbsolutePath());
                         }
                     }
-                    Log.d("ARouter", "Found InstantRun support");
+                    Log.d(TAG, "Found InstantRun support");
                 }
 
             } catch (Exception e) {
-                Log.e("ARouter", "InstantRun support error, " + e.getMessage());
+                Log.e(TAG, "InstantRun support error, " + e.getMessage());
             }
         }
 

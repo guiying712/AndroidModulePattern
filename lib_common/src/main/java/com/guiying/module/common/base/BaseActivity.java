@@ -19,6 +19,36 @@ import com.guiying.module.common.utils.Utils;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+
+    /**
+     * 封装的findViewByID方法
+     */
+    @SuppressWarnings("unchecked")
+    protected <T extends View> T $(@IdRes int id) {
+        return (T) super.findViewById(id);
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ViewManager.getInstance().addActivity(this);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ViewManager.getInstance().finishActivity(this);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+
     /**
      * Setup the toolbar.
      *
@@ -41,33 +71,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     /**
-     * 封装的findViewByID方法
+     * 添加fragment
+     *
+     * @param fragment
+     * @param frameId
      */
-    @SuppressWarnings("unchecked")
-    protected <T extends View> T $(@IdRes int id) {
-        return (T) super.findViewById(id);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ViewManager.getInstance().addActivity(this);
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ViewManager.getInstance().finishActivity(this);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
-    //添加fragment
     protected void addFragment(BaseFragment fragment, @IdRes int frameId) {
         Utils.checkNotNull(fragment);
         getSupportFragmentManager().beginTransaction()
@@ -77,7 +85,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    //替换fragment
+
+    /**
+     * 替换fragment
+     * @param fragment
+     * @param frameId
+     */
     protected void replaceFragment(BaseFragment fragment, @IdRes int frameId) {
         Utils.checkNotNull(fragment);
         getSupportFragmentManager().beginTransaction()
@@ -87,7 +100,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    //隐藏fragment
+
+    /**
+     * 隐藏fragment
+     * @param fragment
+     */
     protected void hideFragment(BaseFragment fragment) {
         Utils.checkNotNull(fragment);
         getSupportFragmentManager().beginTransaction()
@@ -97,7 +114,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-    //显示fragment
+    /**
+     * 显示fragment
+     * @param fragment
+     */
     protected void showFragment(BaseFragment fragment) {
         Utils.checkNotNull(fragment);
         getSupportFragmentManager().beginTransaction()
@@ -107,6 +127,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * 移除fragment
+     * @param fragment
+     */
     protected void removeFragment(BaseFragment fragment) {
         Utils.checkNotNull(fragment);
         getSupportFragmentManager().beginTransaction()
@@ -116,7 +140,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-    //移除fragment
+    /**
+     * 弹出栈顶部的Fragment
+     */
     protected void popFragment() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
             getSupportFragmentManager().popBackStack();
