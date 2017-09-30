@@ -39,7 +39,7 @@ public class BottomNavigationActivity extends BaseActivity {
                 mPager.setCurrentItem(1);
                 return true;
             } else if (i == R.id.navigation_notifications) {
-                mPager.setCurrentItem(2);
+                mPager.setCurrentItem(0);
                 return true;
             }
             return false;

@@ -41,8 +41,30 @@ public class BaseApplication extends Application {
         for (ApplicationDelegate delegate : mAppDelegateList) {
             delegate.onCreate();
         }
+    }
 
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        for (ApplicationDelegate delegate : mAppDelegateList) {
+            delegate.onTerminate();
+        }
     }
 
 
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        for (ApplicationDelegate delegate : mAppDelegateList) {
+            delegate.onLowMemory();
+        }
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        for (ApplicationDelegate delegate : mAppDelegateList) {
+            delegate.onTrimMemory(level);
+        }
+    }
 }
