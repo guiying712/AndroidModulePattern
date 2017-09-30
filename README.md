@@ -5,6 +5,7 @@
         <td><img src="/screenshots/Screenshot_1.png"></td>
         <td><img src="/screenshots/Screenshot_2.png"></td>
         <td><img src="/screenshots/Screenshot_3.png"></td>
+        <td><img src="/screenshots/Screenshot_4.png"></td>
     </tr>
 </table>
 
@@ -14,8 +15,7 @@ Android项目组件化示例代码
 
 **Android组件化方案**：http://blog.csdn.net/guiying712/article/details/55213884
 
-Android组件化方案中的路由使用了ActivityRouter，但是因为ActivityRouter对于初学者不太友好，
-总是出现莫名其妙的错误，因此现在的 AndroidModulePattern 已经改为使用 阿里ARouter作为路由。
+现在的 AndroidModulePattern 使用 阿里ARouter作为路由，并且已经支持**Fragment组件化**，使用方法请下载Demo查看。
 
 ## 集成开发模式和组件开发模式转换
 
@@ -31,6 +31,7 @@ Android组件化方案中的路由使用了ActivityRouter，但是因为Activity
 1. 配置整个项目的Gradle脚本，例如 混淆、签名等；
 2. app组件中可以初始化全局的库，例如Lib.init(this);
 3. 添加 multiDex 功能
+4. 业务组件管理（组装）；
 
 ### main组件功能（业务组件）：
 1. 声明应用的launcherActivity----->android.intent.category.LAUNCHER；
