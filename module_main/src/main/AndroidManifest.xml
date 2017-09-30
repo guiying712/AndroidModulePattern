@@ -12,7 +12,7 @@
         </activity>
         <activity
             android:name=".BottomNavigationActivity"
-            android:label="@string/title_activity_bottom_navigation">
+            android:label="@string/title_activity_fragment_module">
 
         </activity>
     </application>

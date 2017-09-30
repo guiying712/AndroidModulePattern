@@ -9,6 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="这里是新闻 " />
+        android:text="我是来自news组件的Fragment " />
 
 </FrameLayout>

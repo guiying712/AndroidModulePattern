@@ -7,6 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text=" 这里是女孩 " />
+        android:text=" 我是来自Girls组件的Fragment " />
 
 </FrameLayout>
