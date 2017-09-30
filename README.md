@@ -14,10 +14,12 @@
 Android项目组件化示例代码
 
 **Android组件化方案**：http://blog.csdn.net/guiying712/article/details/55213884
+**Android组件化之终极方案**：http://blog.csdn.net/guiying712/article/details/78057120
 
-1、现在的 AndroidModulePattern 使用 阿里ARouter作为路由；
-2、Android组件化方案已经支持 **Fragment组件化**，使用方法请下载Demo查看；
-3、目前Android组件化方案还没有写完，后续会**继续更新**，完善组件化方案。
+1. 现在的 AndroidModulePattern 使用 阿里ARouter作为路由；
+2. Android组件化方案已经支持 **Fragment组件化**，使用方法请下载Demo查看；
+3. 目前Android组件化方案还没有写完，后续会**继续更新**，完善组件化方案。
+
 
 ## 集成开发模式和组件开发模式转换
 
