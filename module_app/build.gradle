@@ -1,5 +1,13 @@
 apply plugin: 'com.android.application'
 
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 static def buildTime() {
     return new Date().format("yyyyMMdd");
 }
@@ -7,15 +15,14 @@ static def buildTime() {
 android {
     signingConfigs {
         release {
-            keyAlias 'guiying712'
-            keyPassword 'guiying712'
-            storeFile file('/mykey.jks')
-            storePassword 'guiying712'
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
         }
     }
 
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "com.guiying.module"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -60,13 +67,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:multidex:1.0.1'
-    if (isModule.toBoolean()) {
-        compile project(':lib_common')
-    } else {
-        compile project(':module_main')
-        compile project(':module_girls')
-        compile project(':module_news')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:multidex:1.0.2'
+    implementation project(':lib_common')
+    if (!isModule.toBoolean()) {
+        implementation project(':module_main')
+        implementation project(':module_girls')
+        implementation project(':module_news')
     }
 }

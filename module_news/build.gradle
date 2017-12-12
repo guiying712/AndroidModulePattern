@@ -6,8 +6,6 @@ if (isModule.toBoolean()) {
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -39,8 +37,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.annotationProcessor"
-    compile project(':lib_common')
-    compile 'com.android.support:support-v4:25.3.1'
+    implementation project(':lib_common')
 }

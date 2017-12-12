@@ -2,6 +2,7 @@ package com.guiying.module.news;
 
 import com.guiying.module.common.base.ApplicationDelegate;
 import com.guiying.module.common.base.ViewManager;
+import com.orhanobut.logger.Logger;
 
 /**
  * <p>类说明</p>
@@ -10,12 +11,11 @@ import com.guiying.module.common.base.ViewManager;
  * @version V2.8.3
  * @name MyDelegate
  */
-
-
 public class MyDelegate implements ApplicationDelegate {
 
     @Override
     public void onCreate() {
+        Logger.init("pattern");
         ViewManager.getInstance().addFragment(0, new NewsFragment());
     }
 

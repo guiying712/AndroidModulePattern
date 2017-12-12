@@ -41,6 +41,7 @@ public class BaseApplication extends Application {
         for (ApplicationDelegate delegate : mAppDelegateList) {
             delegate.onCreate();
         }
+
     }
 
     @Override

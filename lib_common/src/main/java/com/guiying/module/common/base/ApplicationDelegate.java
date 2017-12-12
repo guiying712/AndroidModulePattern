@@ -7,8 +7,6 @@ package com.guiying.module.common.base;
  * @version V2.8.3
  * @name ApplicationDelegate
  */
-
-
 public interface ApplicationDelegate {
 
     void onCreate();

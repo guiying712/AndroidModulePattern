@@ -2,8 +2,6 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -13,25 +11,26 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
     //Android Support
-    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support:design:$rootProject.supportLibraryVersion"
-    compile "com.android.support:percent:$rootProject.supportLibraryVersion"
+    api "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    api "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    api "com.android.support:design:$rootProject.supportLibraryVersion"
+    api "com.android.support:percent:$rootProject.supportLibraryVersion"
     //网络请求相关
-    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    compile "com.squareup.retrofit2:retrofit-mock:$rootProject.retrofitVersion"
-    compile "com.github.franmontiel:PersistentCookieJar:$rootProject.cookieVersion"
+    api "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    api "com.squareup.retrofit2:retrofit-mock:$rootProject.retrofitVersion"
+    api "com.github.franmontiel:PersistentCookieJar:$rootProject.cookieVersion"
     //稳定的
-    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    compile "com.orhanobut:logger:$rootProject.loggerVersion"
-    compile "org.greenrobot:eventbus:$rootProject.eventbusVersion"
-    compile "com.google.code.gson:gson:$rootProject.gsonVersion"
-    compile "com.github.chrisbanes:PhotoView:$rootProject.photoViewVersion"
+    api "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    api "com.orhanobut:logger:$rootProject.loggerVersion"
+    api "org.greenrobot:eventbus:$rootProject.eventbusVersion"
+    api "com.google.code.gson:gson:$rootProject.gsonVersion"
+    api "com.github.chrisbanes:PhotoView:$rootProject.photoViewVersion"
 
-    compile "com.jude:easyrecyclerview:$rootProject.easyRecyclerVersion"
-    compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
+    api "com.jude:easyrecyclerview:$rootProject.easyRecyclerVersion"
+    api "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
 
     //router
-    compile "com.alibaba:arouter-api:$rootProject.routerVersion"
+    api "com.alibaba:arouter-api:$rootProject.routerVersion"
 }

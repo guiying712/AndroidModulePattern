@@ -1,11 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-    }
+    apply from: '/versions.gradle'
 
+    repositories {
+        google()
+        jcenter()
+    }
     dependencies {
         //classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
         //$localGradlePluginVersion是gradle.properties中的数据
@@ -15,10 +16,9 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
         jcenter()
-        mavenCentral()
-        //Add the JitPack repository
-        maven { url "https://jitpack.io" }
+        maven { url 'https://jitpack.io' }
         //支持arr包
         flatDir {
             dirs 'libs'
@@ -30,32 +30,3 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-// Define versions in a single place
-//时间：2017.2.13；每次修改版本号都要添加修改时间
-ext {
-    // Sdk and tools
-    //localBuildToolsVersion是gradle.properties中的数据
-    buildToolsVersion = localBuildToolsVersion
-    compileSdkVersion = 25
-    minSdkVersion = 16
-    targetSdkVersion = 25
-    versionCode = 1
-    versionName = "1.0"
-    javaVersion = JavaVersion.VERSION_1_8
-
-    // App dependencies version
-    supportLibraryVersion = "25.3.1"
-    retrofitVersion = "2.1.0"
-    glideVersion = "3.7.0"
-    loggerVersion = "1.15"
-    eventbusVersion = "3.0.0"
-    gsonVersion = "2.8.0"
-    photoViewVersion = "2.0.0"
-
-    //检查时间：2017.6.6
-    annotationProcessor = "1.0.3"
-    routerVersion = "1.2.1.1"
-    easyRecyclerVersion = "4.4.0"
-    cookieVersion = "v1.0.1"
-    toastyVersion = "1.1.3"
-}
