@@ -22,16 +22,22 @@ android {
         }
     }
 
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion build_versions.target_sdk
     defaultConfig {
         applicationId "com.guiying.module"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
         multiDexEnabled true
         //打包时间
         resValue "string", "build_time", buildTime()
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -68,7 +74,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:multidex:1.0.2'
+    implementation deps.support.multidex
     implementation project(':lib_common')
     if (!isModule.toBoolean()) {
         implementation project(':module_main')

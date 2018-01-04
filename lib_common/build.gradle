@@ -1,36 +1,76 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion build_versions.target_sdk
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
     }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            zipAlignEnabled false
+            shrinkResources false
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
-    //Android Support
-    api "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-    api "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    api "com.android.support:design:$rootProject.supportLibraryVersion"
-    api "com.android.support:percent:$rootProject.supportLibraryVersion"
-    //网络请求相关
-    api "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    api "com.squareup.retrofit2:retrofit-mock:$rootProject.retrofitVersion"
-    api "com.github.franmontiel:PersistentCookieJar:$rootProject.cookieVersion"
-    //稳定的
-    api "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    api "com.orhanobut:logger:$rootProject.loggerVersion"
-    api "org.greenrobot:eventbus:$rootProject.eventbusVersion"
-    api "com.google.code.gson:gson:$rootProject.gsonVersion"
-    api "com.github.chrisbanes:PhotoView:$rootProject.photoViewVersion"
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    // Support libraries
+    api deps.support.app_compat
+    api deps.support.v4
+    api deps.support.v13
+    api deps.support.design
+    api deps.support.cardview
+    api deps.support.percent
+    api deps.support.recyclerview
+    api deps.constraint_layout
 
-    api "com.jude:easyrecyclerview:$rootProject.easyRecyclerVersion"
-    api "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
+    // RxJava and retrofit
+    api deps.rx_android
+    api deps.rxjava2
+    api deps.retrofit.runtime
+    api deps.retrofit.gson
+    api deps.persistent_cookie
+
+    //Dagger
+    api deps.dagger.runtime
+    api deps.dagger.android
+    api deps.dagger.android_support
+
+    // other
+    api deps.kotlin.stdlib
+    api deps.event_bus
+    api deps.gson
+    api deps.permission
+    api deps.utils
+    api deps.glide
+
+    //view
+    api deps.photo_view
+    api deps.easy_recycler
+    api deps.material_dialog
+    api deps.logger
+    api deps.toasty
 
     //router
-    api "com.alibaba:arouter-api:$rootProject.routerVersion"
+    api deps.arouter_api
+
+    //annotationProcessor
+    annotationProcessor deps.dagger.android_support_compiler
+    annotationProcessor deps.dagger.compiler
 }

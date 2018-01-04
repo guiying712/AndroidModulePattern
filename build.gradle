@@ -1,32 +1,38 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    apply from: '/versions.gradle'
-
-    repositories {
-        google()
-        jcenter()
-    }
+    apply from: 'versions.gradle'
+    addRepos(repositories)
     dependencies {
-        //classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
-        //$localGradlePluginVersion是gradle.properties中的数据
-        classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
+        /* classpath deps.android_gradle_plugin*/
+        classpath deps.android_gradle_plugin
+        classpath deps.kotlin.plugin
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
 allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven { url 'https://jitpack.io' }
-        //支持arr包
-        flatDir {
-            dirs 'libs'
+    addRepos(repositories)
+    // Android dependency 'com.android.support:design' has different version for the compile (25.3.1) and runtime (25.4.0) classpath.
+    // You should manually set the same version via DependencyResolution
+    subprojects {
+        project.configurations.all {
+            resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == 'com.android.support'
+                        && !details.requested.name.contains('multidex')) {
+                    details.useVersion  "27.0.2"
+                }
+            }
         }
+    }
+
+    // 组件缓存更新时间设置（默认每次build都更新）
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'minutes'
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-

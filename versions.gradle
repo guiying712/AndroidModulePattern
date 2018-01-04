@@ -1,27 +1,126 @@
-// Define versions in a single place
-//时间：2017.2.13；每次修改版本号都要添加修改时间
-rootProject.ext {
-    // Sdk and tools
-    compileSdkVersion = 25
-    minSdkVersion = 16
-    targetSdkVersion = 25
-    versionCode = 1
-    versionName = "1.0"
-    javaVersion = JavaVersion.VERSION_1_8
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+ext.deps = [:]
 
-    // App dependencies versions
-    supportLibraryVersion = "25.4.0"
-    retrofitVersion = "2.1.0"
-    glideVersion = "3.8.0"
-    loggerVersion = "1.15"
-    eventbusVersion = "3.0.0"
-    gsonVersion = "2.8.0"
-    photoViewVersion = "2.0.0"
+def versions = [:]
+versions.android_gradle_plugin = "3.0.1"
+versions.kotlin = "1.1.51"
+versions.support = "27.0.2"
+versions.multidex = "1.0.2"
+versions.constraint_layout = "1.0.2"
+versions.dagger = "2.11"
+versions.glide = "3.8.0"
+versions.rxjava2 = "2.1.7"
+versions.rx_android = "2.0.1"
+versions.retrofit = "2.3.0"
+versions.event_bus = "3.1.1"
+versions.photo_view = "2.0.0"
+versions.persistent_cookie = "v1.0.1"
+versions.gson = "2.8.2"
+versions.qmui = "1.0.4"
+versions.flow_layout = "1.0.3"
+versions.swipe_recycler = "1.1.3"
+versions.easy_recycler = "4.4.2"
+versions.permission = "1.1.2"
+versions.utils = "1.10.0"
+versions.top_snackbar = "1.1.1"
+versions.litepal = "1.6.1"
+versions.toasty = "1.1.3"
+versions.logger = "1.15"
+versions.material_dialog = "0.9.6.0"
+//Arouter
+versions.arouter_compiler = "1.1.4"
+versions.arouter_api = "1.3.1"
 
-    //检查时间：2017.6.6
-    annotationProcessor = "1.0.3"
-    routerVersion = "1.2.1.1"
-    easyRecyclerVersion = "4.4.0"
-    cookieVersion = "v1.0.1"
-    toastyVersion = "1.1.3"
+
+
+def deps = [:]
+
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.app_compat = "com.android.support:appcompat-v7:$versions.support"
+support.v13 = "com.android.support:support-v13:$versions.support"
+support.percent = "com.android.support:percent:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+support.core_utils = "com.android.support:support-core-utils:$versions.support"
+support.multidex = "com.android.support:multidex:$versions.multidex"
+deps.support = support
+
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.adapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofi"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+deps.retrofit = retrofit
+
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
+
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+deps.kotlin = kotlin
+
+//view
+deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+deps.qmui = "com.qmuiteam:qmui:$versions.qmui"
+deps.flow_layout = "com.zhy:flowlayout-lib:$versions.flow_layout"
+deps.swipe_recycler = "com.yanzhenjie:recyclerview-swipe:$versions.swipe_recycler"
+deps.easy_recycler = "com.jude:easyrecyclerview:$versions.easy_recycler"
+deps.photo_view = "com.github.chrisbanes:PhotoView:$versions.photo_view"
+deps.material_dialog = "com.afollestad.material-dialogs:core:$versions.material_dialog"
+
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+//other
+deps.glide = "com.github.bumptech.glide:glide:$versions.glide"
+deps.event_bus = "org.greenrobot:eventbus:$versions.event_bus"
+deps.persistent_cookie = "com.github.franmontiel:PersistentCookieJar:$versions.persistent_cookie"
+deps.gson = "com.google.code.gson:gson:$versions.gson"
+deps.permission = "com.yanzhenjie:permission:$versions.permission"
+deps.utils = "com.blankj:utilcode:$versions.utils"
+deps.top_snackbar ="com.androidadvance:topsnackbar:$versions.top_snackbar"
+deps.litepal = "org.litepal.android:core:$versions.litepal"
+deps.toasty =  "com.github.GrenderG:Toasty:$versions.toasty"
+deps.logger = "com.orhanobut:logger:$versions.logger"
+deps.arouter_api = "com.alibaba:arouter-api:$versions.arouter_api"
+deps.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 16
+build_versions.target_sdk = 27
+build_versions.build_tools = "27.0.2"
+ext.build_versions = build_versions
+
+
+def addRepos(RepositoryHandler handler) {
+    /*公司仓库*/
+    handler.maven {
+        url "http://maven.hikvision.com.cn/nexus/content/groups/System-Android-down/"
+        credentials {
+            username "System-Android"
+            password "HikSysDeveloper123"
+        }
+    }
+
+    handler.google()
+    handler.jcenter()
 }
+
+ext.addRepos = this.&addRepos
