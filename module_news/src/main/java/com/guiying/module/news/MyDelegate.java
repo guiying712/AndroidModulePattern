@@ -1,6 +1,8 @@
 package com.guiying.module.news;
 
-import com.guiying.module.common.base.ApplicationDelegate;
+import android.support.annotation.Keep;
+
+import com.guiying.module.common.base.IApplicationDelegate;
 import com.guiying.module.common.base.ViewManager;
 import com.orhanobut.logger.Logger;
 
@@ -11,12 +13,14 @@ import com.orhanobut.logger.Logger;
  * @version V2.8.3
  * @name MyDelegate
  */
-public class MyDelegate implements ApplicationDelegate {
+@Keep
+public class MyDelegate implements IApplicationDelegate {
 
     @Override
     public void onCreate() {
         Logger.init("pattern");
-        ViewManager.getInstance().addFragment(0, new NewsFragment());
+        //主动添加
+        ViewManager.getInstance().addFragment(0, NewsFragment.newInstance());
     }
 
     @Override

@@ -2,10 +2,18 @@ package com.guiying.module.common.base;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
+import android.support.annotation.Keep;
 import android.support.v4.app.Fragment;
 
 import com.guiying.module.common.utils.Utils;
 
+/**
+ * <p>Fragment的基类</p>
+ *
+ * @author 张华洋
+ * @name BaseFragment
+ */
+@Keep
 public abstract class BaseFragment extends Fragment {
 
     protected BaseActivity mActivity;

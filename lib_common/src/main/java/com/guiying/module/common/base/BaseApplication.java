@@ -24,7 +24,7 @@ public class BaseApplication extends Application {
 
     private static BaseApplication sInstance;
 
-    private List<ApplicationDelegate> mAppDelegateList;
+    private List<IApplicationDelegate> mAppDelegateList;
 
 
     public static BaseApplication getIns() {
@@ -37,8 +37,8 @@ public class BaseApplication extends Application {
         sInstance = this;
         Logger.init("pattern").logLevel(LogLevel.FULL);
         Utils.init(this);
-        mAppDelegateList = ClassUtils.getObjectsWithInterface(this, ApplicationDelegate.class, ROOT_PACKAGE);
-        for (ApplicationDelegate delegate : mAppDelegateList) {
+        mAppDelegateList = ClassUtils.getObjectsWithInterface(this, IApplicationDelegate.class, ROOT_PACKAGE);
+        for (IApplicationDelegate delegate : mAppDelegateList) {
             delegate.onCreate();
         }
 
@@ -47,7 +47,7 @@ public class BaseApplication extends Application {
     @Override
     public void onTerminate() {
         super.onTerminate();
-        for (ApplicationDelegate delegate : mAppDelegateList) {
+        for (IApplicationDelegate delegate : mAppDelegateList) {
             delegate.onTerminate();
         }
     }
@@ -56,7 +56,7 @@ public class BaseApplication extends Application {
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        for (ApplicationDelegate delegate : mAppDelegateList) {
+        for (IApplicationDelegate delegate : mAppDelegateList) {
             delegate.onLowMemory();
         }
     }
@@ -64,7 +64,7 @@ public class BaseApplication extends Application {
     @Override
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
-        for (ApplicationDelegate delegate : mAppDelegateList) {
+        for (IApplicationDelegate delegate : mAppDelegateList) {
             delegate.onTrimMemory(level);
         }
     }

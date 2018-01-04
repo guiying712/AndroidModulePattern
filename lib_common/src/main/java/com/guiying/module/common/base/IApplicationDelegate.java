@@ -1,5 +1,7 @@
 package com.guiying.module.common.base;
 
+import android.support.annotation.Keep;
+
 /**
  * <p>类说明</p>
  *
@@ -7,7 +9,8 @@ package com.guiying.module.common.base;
  * @version V2.8.3
  * @name ApplicationDelegate
  */
-public interface ApplicationDelegate {
+@Keep
+public interface IApplicationDelegate {
 
     void onCreate();
 

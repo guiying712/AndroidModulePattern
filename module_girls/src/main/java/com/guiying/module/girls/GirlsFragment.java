@@ -15,6 +15,16 @@ import com.guiying.module.common.base.BaseFragment;
  */
 public class GirlsFragment extends BaseFragment {
 
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @return A new instance of fragment GirlsFragment.
+     */
+    public static GirlsFragment newInstance() {
+        return new GirlsFragment();
+    }
+
 
     public GirlsFragment() {
         // Required empty public constructor

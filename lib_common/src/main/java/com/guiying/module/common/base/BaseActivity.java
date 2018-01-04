@@ -2,6 +2,7 @@ package com.guiying.module.common.base;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.Keep;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +18,7 @@ import com.guiying.module.common.utils.Utils;
  * @version V1.0.0
  * @name BaseActivity
  */
+@Keep
 public abstract class BaseActivity extends AppCompatActivity {
 
 

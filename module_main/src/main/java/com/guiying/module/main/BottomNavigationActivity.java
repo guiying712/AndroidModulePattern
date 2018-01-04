@@ -8,6 +8,8 @@ import android.view.MenuItem;
 
 import com.guiying.module.common.base.BaseActivity;
 import com.guiying.module.common.base.BaseFragment;
+import com.guiying.module.common.base.ClassUtils;
+import com.guiying.module.common.base.IViewDelegate;
 import com.guiying.module.common.base.ViewManager;
 import com.guiying.module.common.widget.NoScrollViewPager;
 
@@ -39,7 +41,7 @@ public class BottomNavigationActivity extends BaseActivity {
                 mPager.setCurrentItem(1);
                 return true;
             } else if (i == R.id.navigation_notifications) {
-                mPager.setCurrentItem(0);
+                mPager.setCurrentItem(2);
                 return true;
             }
             return false;
@@ -57,12 +59,28 @@ public class BottomNavigationActivity extends BaseActivity {
     }
 
     private void initViewPager() {
-        mFragments = ViewManager.getInstance().getAllFragment();
+        mFragments = ViewManager.getInstance().getAllFragment();//这几个Fragment是主动添加到ViewManager中的
+        BaseFragment newsFragment = getNewsFragment();//主动寻找
+        mFragments.add(newsFragment);
         mPager = (NoScrollViewPager) findViewById(R.id.container_pager);
         mAdapter = new FragmentAdapter(getSupportFragmentManager(), mFragments);
         mPager.setPagerEnabled(false);
         mPager.setAdapter(mAdapter);
     }
 
+
+    /**
+     * 在News模块中寻找实现的Fragment
+     *
+     * @return Fragment
+     */
+    private BaseFragment getNewsFragment() {
+        BaseFragment newsFragment = null;
+        List<IViewDelegate> viewDelegates = ClassUtils.getObjectsWithInterface(this, IViewDelegate.class, "com.guiying.module.news");
+        if (viewDelegates != null && !viewDelegates.isEmpty()) {
+            newsFragment = viewDelegates.get(0).getFragment("");
+        }
+        return newsFragment;
+    }
 
 }

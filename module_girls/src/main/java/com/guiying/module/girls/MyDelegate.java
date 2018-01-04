@@ -1,6 +1,8 @@
 package com.guiying.module.girls;
 
-import com.guiying.module.common.base.ApplicationDelegate;
+import android.support.annotation.Keep;
+
+import com.guiying.module.common.base.IApplicationDelegate;
 import com.guiying.module.common.base.ViewManager;
 
 /**
@@ -10,11 +12,13 @@ import com.guiying.module.common.base.ViewManager;
  * @version V2.8.3
  * @name MyDelegate
  */
-public class MyDelegate implements ApplicationDelegate {
+@Keep
+public class MyDelegate implements IApplicationDelegate {
 
     @Override
     public void onCreate() {
-        ViewManager.getInstance().addFragment(0, new GirlsFragment());
+        //主动添加
+        ViewManager.getInstance().addFragment(0, GirlsFragment.newInstance());
     }
 
     @Override

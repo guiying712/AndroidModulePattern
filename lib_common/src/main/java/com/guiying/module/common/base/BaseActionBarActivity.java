@@ -8,6 +8,7 @@
 package com.guiying.module.common.base;
 
 import android.os.Bundle;
+import android.support.annotation.Keep;
 import android.support.annotation.StringRes;
 import android.support.v7.app.ActionBar;
 
@@ -22,6 +23,7 @@ import com.guiying.module.common.R;
  * @version V1.2.0
  * @name BaseActionBarActivity
  */
+@Keep
 public abstract class BaseActionBarActivity extends BaseActivity {
 
     /*默认的ActionBar*/

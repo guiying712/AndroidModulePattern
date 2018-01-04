@@ -2,6 +2,7 @@ package com.guiying.module.common.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.Keep;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Stack;
  * @version V1.1
  * @name ViewManager
  */
+@Keep
 public class ViewManager {
 
     private static Stack<Activity> activityStack;
