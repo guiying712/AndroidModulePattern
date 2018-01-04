@@ -108,7 +108,6 @@ build_versions.target_sdk = 27
 build_versions.build_tools = "27.0.2"
 ext.build_versions = build_versions
 
-
 def addRepos(RepositoryHandler handler) {
     handler.google()
     handler.jcenter()
