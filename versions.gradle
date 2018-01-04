@@ -110,15 +110,6 @@ ext.build_versions = build_versions
 
 
 def addRepos(RepositoryHandler handler) {
-    /*公司仓库*/
-    handler.maven {
-        url "http://maven.hikvision.com.cn/nexus/content/groups/System-Android-down/"
-        credentials {
-            username "System-Android"
-            password "HikSysDeveloper123"
-        }
-    }
-
     handler.google()
     handler.jcenter()
 }
