@@ -110,17 +110,12 @@ ext.build_versions = build_versions
 
 
 def addRepos(RepositoryHandler handler) {
-    /*公司仓库*/
-    handler.maven {
-        url "http://maven.hikvision.com.cn/nexus/content/groups/System-Android-down/"
-        credentials {
-            username "System-Android"
-            password "HikSysDeveloper123"
-        }
-    }
-
     handler.google()
     handler.jcenter()
+    handler.mavenCentral()
+    //Add the JitPack repository
+    handler.maven { url "https://jitpack.io" }
+    handler.maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
 }
 
 ext.addRepos = this.&addRepos
