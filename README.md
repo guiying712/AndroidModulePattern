@@ -13,6 +13,8 @@
 
 Android项目组件化示例代码
 
+**声明**：此方案只适用于小团体小项目使用（不涉及跨部门或跨公司）。
+
 **Android组件化方案**：http://blog.csdn.net/guiying712/article/details/55213884
 
 **Android组件化之终极方案**：http://blog.csdn.net/guiying712/article/details/78057120
