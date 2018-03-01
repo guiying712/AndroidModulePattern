@@ -1,5 +1,6 @@
-include ':module_app',
+include ':lib_common',
+        ':module_app',
         ':module_main',
         ':module_girls',
-        ':module_news',
-        ':lib_common'
+        ':module_news'
+        

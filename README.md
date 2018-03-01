@@ -21,14 +21,12 @@ Android项目组件化示例代码
 
 2. Android组件化方案已经支持 **Fragment组件化**，使用方法请下载Demo查看；
 
-3. 目前Android组件化方案还没有写完，后续会**继续更新**，完善组件化方案。
-
-4. 本项目已适配Android Studio 3.0.1版本(Google仓库会带来一定影响)
+3. 本项目已适配Android Studio 3.0.1版本(Google仓库会带来一定影响)
 
 
 ## 集成开发模式和组件开发模式转换
 
-**1、首先打开Android项目的 gradle.properties 文件，然后将 isModule 改为你需要的开发模式，
+**1、首先打开Android项目的 gradle.properties 文件，然后将 isModule 改为你需要的开发模式（true/false），
 然后点击 "Sync Project" 按钮同步项目；**
 
 **2、![Image](/screenshots/develper.PNG) 在运行之前，请先按照图中选择一个能够运行的组件；**
